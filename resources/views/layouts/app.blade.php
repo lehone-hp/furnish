@@ -25,9 +25,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-
-    @yield("css")
-
     <!-- Modernizr JS -->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
 
@@ -45,7 +42,7 @@
                 <!-- logo -->
                 <div class="col-md-2 col-sm-6 col-xs-6">
                     <div class="header-logo">
-                        <a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}" alt="main logo"></a>
+                        <a href="/"><img src="{{ asset('img/logo.png') }}" alt="main logo"></a>
                     </div>
                 </div>
                 <!-- header-search & total-cart -->
@@ -60,11 +57,8 @@
                             <ul>
                                 <li><a href="#" data-toggle="dropdown"><i class="pe-7s-config"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Log in</a></li>
-                                        <li><a href="#">Register</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="{{ route('wishlist') }}">Wish list</a></li>
-                                        <li><a href="{{ route('checkout') }}">Checkout</a></li>
+                                        <li><a href="/login">Log in</a></li>
+                                        <li><a href="/register">Register</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -83,10 +77,10 @@
                                 <div class="all-cart-product clearfix">
                                     <div class="single-cart clearfix">
                                         <div class="cart-image">
-                                            <a href="{{ route('product.details') }}"><img src="{{ asset('img/product/cart-1.jpg') }}" alt=""></a>
+                                            <a href="/products/1"><img src="{{ asset('img/product/cart-1.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="cart-info">
-                                            <h5><a href="{{ route('product.details') }}">Le Parc Minotti Chair</a></h5>
+                                            <h5><a href="/products/1">Le Parc Minotti Chair</a></h5>
                                             <p>Price : £9.00</p>
                                             <p>Qty : 1</p>
                                             <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
@@ -94,10 +88,10 @@
                                     </div>
                                     <div class="single-cart clearfix">
                                         <div class="cart-image">
-                                            <a href="{{ route('product.details') }}"><img src="{{ asset('img/product/cart-2.jpg') }}" alt=""></a>
+                                            <a href="/products/1"><img src="{{ asset('img/product/cart-2.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="cart-info">
-                                            <h5><a href="{{ route('product.details') }}">DSR Eiffel chair</a></h5>
+                                            <h5><a href="/products/1">DSR Eiffel chair</a></h5>
                                             <p>Price : £9.00</p>
                                             <p>Qty : 1</p>
                                             <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
@@ -109,8 +103,10 @@
                                     <h5>Total <span>£12.00</span></h5>
                                 </div>
                                 <!-- Cart Button -->
-                                <div class="cart-bottom  clearfix">
-                                    <a href="{{ route('checkout') }}">Check out</a>
+                                <div class="cart-bottom">
+                                    <a href="/cart" class="btn-sm">Cart</a>
+                                    <p class="clearfix"></p>
+                                    <a href="/checkout" class="btn-sm">Check out</a>
                                 </div>
                             </div>
                         </div>
@@ -120,10 +116,10 @@
                 <div class="col-md-8 col-xs-12">
                     <nav class="main-menu text-center">
                         <ul>
-                            <li class="active"><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="{{ route('shop') }}">shop</a>
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/shop">shop</a>
                                 <ul class="mega-menu">
-                                    <li><a href="{{ route('shop') }}">Chair</a>
+                                    <li><a href="/shop">Chair</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -133,7 +129,7 @@
                                             <li><a href="#">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('shop') }}">Table</a>
+                                    <li><a href="/shop">Table</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -143,7 +139,7 @@
                                             <li><a href="#">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('shop') }}">Cabinet</a>
+                                    <li><a href="/shop">Cabinet</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -155,9 +151,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('shop') }}">sofa</a></li>
-                            <li><a href="{{ route('shop') }}">Cabinet</a></li>
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li><a href="/shop">sofa</a></li>
+                            <li><a href="/shop">Cabinet</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="mobile-menu"></div>
@@ -180,26 +176,152 @@
     @yield('content')
 
     <!-- Page footer -->
-    @include('layouts.footer')
+    <!-- SERVICE SECTION START -->
+    <div class="service-section section pt-70 pb-40">
+        <div class="container">
+            <div class="row">
+                <!-- Single Service -->
+                <div class="single-service col-md-3 col-sm-6 col-xs-6 mb-30">
+                    <div class="service-icon">
+                        <i class="pe-7s-world"></i>
+                    </div>
+                    <div class="service-title">
+                        <h3>FREE SHIPPING</h3>
+                        <p>Free shipping on all UK orders</p>
+                    </div>
+                </div>
+                <!-- Single Service -->
+                <div class="single-service col-md-3 col-sm-6 col-xs-6 mb-30">
+                    <div class="service-icon">
+                        <i class="pe-7s-refresh"></i>
+                    </div>
+                    <div class="service-title">
+                        <h3>FREE EXCHANGE</h3>
+                        <p>30 days return on all items</p>
+                    </div>
+                </div>
+                <!-- Single Service -->
+                <div class="single-service col-md-3 col-sm-6 col-xs-6 mb-30">
+                    <div class="service-icon">
+                        <i class="pe-7s-headphones"></i>
+                    </div>
+                    <div class="service-title">
+                        <h3>PREMIUM SUPPORT</h3>
+                        <p>We support online 24 hours a day</p>
+                    </div>
+                </div>
+                <!-- Single Service -->
+                <div class="single-service col-md-3 col-sm-6 col-xs-6 mb-30">
+                    <div class="service-icon">
+                        <i class="pe-7s-gift"></i>
+                    </div>
+                    <div class="service-title">
+                        <h3>BLACK FRIDAY</h3>
+                        <p>Shocking discount on every friday</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SERVICE SECTION END -->
+
+    <!-- FOOTER TOP SECTION START -->
+    <div class="footer-top-section section pb-60 pt-100">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Widget -->
+                <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">
+                    <h4 class="widget-title">Contact Info</h4>
+                    <p><strong>Address :</strong> <span>28 Green Tower, Street Name, New York City, USA</span></p>
+                    <p><strong>Phone :</strong> <span>+8880 44338899</span></p>
+                    <p><strong>Email :</strong> <a href="#">yourmail@outlook.com</a></p>
+                    <!-- Footer Social -->
+                    <div class="footer-social fix">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-rss"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <!-- Footer Widget -->
+                <div class="footer-widget link-widget col-md-3 col-sm-6 col-xs-12 mb-40">
+                    <h4 class="widget-title">accounts</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="/wishlsist">My Wishlist</a></li>
+                        <li><a href="/cart">My Cart</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="/checkout">Check out</a></li>
+                    </ul>
+                </div>
+                <!-- Footer Widget -->
+                <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">
+                    <h4 class="widget-title">tags</h4>
+                    <div class="tag-cloud fix">
+                        <a href="#">brand</a>
+                        <a href="#">fashion</a>
+                        <a href="#">sale</a>
+                        <a href="#">winter sale</a>
+                        <a href="#">summer sale</a>
+                        <a href="#">men</a>
+                        <a href="#">women</a>
+                        <a href="#">kids</a>
+                    </div>
+                </div>
+                <!-- Footer Widget -->
+                <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">
+                    <h4 class="widget-title">Newsletters</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt.</p>
+                    <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="sunscribe-form validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <label for="mce-EMAIL" class="hidden">Subscribe to our mailing list</label>
+                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER TOP SECTION END -->
+
+    <!-- FOOTER BOTTOM SECTION START -->
+    <div class="footer-bottom-section section pb-20 pt-20">
+        <div class="container">
+            <div class="row">
+                <!-- Copyright -->
+                <div class="copyright text-left col-sm-6 col-xs-12">
+                    <p>Copyright &copy; 2018 <a href="#">Furnish Team</a>. All Right Reserved.</p>
+                </div>
+                <!-- Payment Method -->
+                <div class="payment-method text-right col-sm-6 col-xs-12">
+                    <img src="{{ asset('img/payment/1.png') }}" alt="payment" />
+                    <img src="{{ asset('img/payment/2.png') }}" alt="payment" />
+                    <img src="{{ asset('img/payment/3.png') }}" alt="payment" />
+                    <img src="{{ asset('img/payment/4.png') }}" alt="payment" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER BOTTOM SECTION END -->
+
 
 </div>
 <!-- Body main wrapper end -->
-
-
 <!-- Placed JS at the end of the document so the pages load faster -->
-
 <!-- jQuery latest version -->
-<script src="js/vendor/jquery-3.1.1.min.js"></script>
+<script src="/js/vendor/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="js/plugins.js"></script>
+<script src="/js/plugins.js"></script>
 <!-- Ajax Mail js -->
-<script src="js/ajax-mail.js"></script>
+<script src="/js/ajax-mail.js"></script>
 <!-- Main js -->
-<script src="js/main.js"></script>
-
-@yield("footer-script")
+<script src="/js/main.js"></script>
 
 </body>
 

@@ -1,13 +1,9 @@
 @extends('layouts.app')
+
 @section("title")
     Contact
 @endsection
 
-@section('css')
-    <style>
-
-    </style>
-@endsection
 
 @section('content')
     <!-- Page content -->
@@ -18,7 +14,7 @@
                 <div class="page-banner-content col-xs-12">
                     <h2>Contact</h2>
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('index') }}">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="active">Contact</li>
                     </ul>
                 </div>
@@ -83,10 +79,4 @@
         </div>
     </div>
     <!-- PAGE SECTION END -->
-@endsection
-
-@section("footer-script")
-    <script>
-        // footer script
-    </script>
 @endsection

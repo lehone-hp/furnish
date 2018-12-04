@@ -3,12 +3,6 @@
     Checkout
 @endsection
 
-@section('css')
-    <style>
-
-    </style>
-@endsection
-
 @section('content')
     <!-- Page content -->
     <!-- PAGE BANNER SECTION -->
@@ -302,10 +296,4 @@
         </div>
     </div>
     <!-- PAGE SECTION END -->
-@endsection
-
-@section("footer-script")
-    <script>
-        // footer script
-    </script>
 @endsection

@@ -3,12 +3,6 @@
     Cart
 @endsection
 
-@section('css')
-    <style>
-
-    </style>
-@endsection
-
 @section('content')
     <!-- Page content -->
     <!-- PAGE BANNER SECTION -->
@@ -69,7 +63,7 @@
                     <div class="col-md-8 col-sm-7 col-xs-12">
                         <div class="cart-buttons mb-30">
                             <input type="submit" value="Update Cart" />
-                            <a href="#">Continue Shopping</a>
+                            <a href="{{ route('shop') }}">Continue Shopping</a>
                         </div>
                         <div class="cart-coupon mb-40">
                             <h4>Coupon</h4>
@@ -106,10 +100,4 @@
     </div>
     <!-- PAGE SECTION END -->
 
-@endsection
-
-@section("footer-script")
-    <script>
-        // footer script
-    </script>
 @endsection

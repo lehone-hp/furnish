@@ -11,30 +11,44 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
 
-Route::get('/shop', function () {
-    return view('shop');
-})->name('shop');
+//======================================/
+//        PAGES ROUTES
+// ==================================== /
 
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('/', 'PagesController@getIndex')->name('index');;
+Route::get('/contact', 'PagesController@getContact')->name('contact');
+Route::get('/shop', 'PagesController@getShop')->name('shop');
+Route::get('/product/{id}', 'PagesController@getProductDetails')->name('product.details');
+Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
+Route::get('/login', 'PagesController@getLogin')->name('login');
+Route::get('/register', 'PagesController@getRegister')->name('register');
 
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+//======================================/
+//        ADMIN ROUTES
+// ==================================== /
 
-Route::get('/product-details', function () {
-    return view('product-details');
-})->name('product.details');
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-})->name('wishlist');
+
+
+//======================================/
+//        CLIENT ROUTES
+// ==================================== /
+
+
+
+//======================================/
+//        CART & WISHLIST ROUTES
+// ==================================== /
+
+
+Route::get('/wishlist', 'WishListController@getWishList')->name('wishlist');
+Route::get('/cart', 'CartController@getCart')->name('cart');
+
+
+
+//======================================/
+//        GET IMAGES ROUTES
+// ==================================== /
+

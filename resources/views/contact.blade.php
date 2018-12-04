@@ -1,13 +1,9 @@
 @extends('layouts.app')
+
 @section("title")
     Contact
 @endsection
 
-@section('css')
-    <style>
-
-    </style>
-@endsection
 
 @section('content')
     <!-- Page content -->
@@ -83,10 +79,4 @@
         </div>
     </div>
     <!-- PAGE SECTION END -->
-@endsection
-
-@section("footer-script")
-    <script>
-        // footer script
-    </script>
 @endsection

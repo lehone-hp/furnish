@@ -1,12 +1,6 @@
 @extends('layouts.app')
 @section("title")
-    Shot List
-@endsection
-
-@section('css')
-    <style>
-
-    </style>
+    Shop List
 @endsection
 
 @section('content')
@@ -405,10 +399,4 @@
     </div>
     <!-- PAGE SECTION END -->
 
-@endsection
-
-@section("footer-script")
-    <script>
-        // footer script
-    </script>
 @endsection

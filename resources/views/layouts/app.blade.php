@@ -17,7 +17,14 @@
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Icon Font -->
+    <!--
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    -->
+    <link href="{{ asset('client/css/font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('client/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('client/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('client/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
     <link rel="stylesheet" href="{{ asset('fonts/pe-Icon/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
     <!-- Plugins css file -->
     <link rel="stylesheet" href="{{ asset('css/plugins.css') }}">
@@ -59,6 +66,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('login') }}">Log in</a></li>
                                         <li><a href="{{ route('register') }}">Register</a></li>
+                                        <li><a href="{{ route('client.dashboard') }}">Client Dashboard</a></li>
                                     </ul>
                                 </li>
                             </ul>

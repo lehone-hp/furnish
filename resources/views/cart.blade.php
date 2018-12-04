@@ -12,7 +12,7 @@
                 <div class="page-banner-content col-xs-12">
                     <h2>Cart</h2>
                     <ul class="breadcrumb">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="{{ route('index') }}">Home</a></li>
                         <li class="active">Cart</li>
                     </ul>
                 </div>
@@ -63,7 +63,7 @@
                     <div class="col-md-8 col-sm-7 col-xs-12">
                         <div class="cart-buttons mb-30">
                             <input type="submit" value="Update Cart" />
-                            <a href="#">Continue Shopping</a>
+                            <a href="{{ route('shop') }}">Continue Shopping</a>
                         </div>
                         <div class="cart-coupon mb-40">
                             <h4>Coupon</h4>

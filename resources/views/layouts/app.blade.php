@@ -42,7 +42,7 @@
                 <!-- logo -->
                 <div class="col-md-2 col-sm-6 col-xs-6">
                     <div class="header-logo">
-                        <a href="/"><img src="{{ asset('img/logo.png') }}" alt="main logo"></a>
+                        <a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}" alt="main logo"></a>
                     </div>
                 </div>
                 <!-- header-search & total-cart -->
@@ -57,8 +57,8 @@
                             <ul>
                                 <li><a href="#" data-toggle="dropdown"><i class="pe-7s-config"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/login">Log in</a></li>
-                                        <li><a href="/register">Register</a></li>
+                                        <li><a href="{{ route('login') }}">Log in</a></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -77,10 +77,10 @@
                                 <div class="all-cart-product clearfix">
                                     <div class="single-cart clearfix">
                                         <div class="cart-image">
-                                            <a href="/products/1"><img src="{{ asset('img/product/cart-1.jpg') }}" alt=""></a>
+                                            <a href="{{ route('product.details', 1) }}"><img src="{{ asset('img/product/cart-1.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="cart-info">
-                                            <h5><a href="/products/1">Le Parc Minotti Chair</a></h5>
+                                            <h5><a href="{{ route('product.details', 1) }}">Le Parc Minotti Chair</a></h5>
                                             <p>Price : £9.00</p>
                                             <p>Qty : 1</p>
                                             <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
@@ -88,10 +88,10 @@
                                     </div>
                                     <div class="single-cart clearfix">
                                         <div class="cart-image">
-                                            <a href="/products/1"><img src="{{ asset('img/product/cart-2.jpg') }}" alt=""></a>
+                                            <a href="{{ route('product.details', 1) }}"><img src="{{ asset('img/product/cart-2.jpg') }}" alt=""></a>
                                         </div>
                                         <div class="cart-info">
-                                            <h5><a href="/products/1">DSR Eiffel chair</a></h5>
+                                            <h5><a href="{{ route('product.details', 1) }}">DSR Eiffel chair</a></h5>
                                             <p>Price : £9.00</p>
                                             <p>Qty : 1</p>
                                             <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
@@ -104,9 +104,9 @@
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom">
-                                    <a href="/cart" class="btn-sm">Cart</a>
+                                    <a href="{{ route('cart') }}" class="btn-sm">Cart</a>
                                     <p class="clearfix"></p>
-                                    <a href="/checkout" class="btn-sm">Check out</a>
+                                    <a href="{{ route('checkout') }}" class="btn-sm">Check out</a>
                                 </div>
                             </div>
                         </div>
@@ -116,10 +116,10 @@
                 <div class="col-md-8 col-xs-12">
                     <nav class="main-menu text-center">
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/shop">shop</a>
+                            <li class="active"><a href="{{ route('index') }}">Home</a></li>
+                            <li><a href="{{ route('shop') }}">shop</a>
                                 <ul class="mega-menu">
-                                    <li><a href="/shop">Chair</a>
+                                    <li><a href="{{ route('shop') }}">Chair</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -129,7 +129,7 @@
                                             <li><a href="#">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="/shop">Table</a>
+                                    <li><a href="{{ route('shop') }}">Table</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -139,7 +139,7 @@
                                             <li><a href="#">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="/shop">Cabinet</a>
+                                    <li><a href="{{ route('shop') }}">Cabinet</a>
                                         <ul>
                                             <li><a href="#">Tops</a></li>
                                             <li><a href="#">Bras &amp; Tanks</a></li>
@@ -151,9 +151,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/shop">sofa</a></li>
-                            <li><a href="/shop">Cabinet</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="{{ route('shop') }}">sofa</a></li>
+                            <li><a href="{{ route('shop') }}">Cabinet</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="mobile-menu"></div>

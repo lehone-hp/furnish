@@ -3,12 +3,6 @@
 Welcome
 @endsection
 
-@section('css')
-<style>
-
-</style>
-@endsection
-
 @section('content')
     <!-- Page content -->
     <!-- START SLIDER SECTION -->
@@ -323,10 +317,4 @@ Welcome
     </div>
     <!-- BLOG SECTION END -->
 
-@endsection
-
-@section("footer-script")
-<script>
-    // footer script
-</script>
 @endsection

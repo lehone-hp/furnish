@@ -12,7 +12,7 @@
                 <div class="page-banner-content col-xs-12">
                     <h2>Checkout</h2>
                     <ul class="breadcrumb">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="{{ route('index') }}">Home</a></li>
                         <li class="active">Checkout</li>
                     </ul>
                 </div>

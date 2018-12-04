@@ -3,12 +3,6 @@
     Product Detail
 @endsection
 
-@section('css')
-<style>
-
-</style>
-@endsection
-
 @section('content')
     <!-- Page content -->
     <!-- PAGE BANNER SECTION -->

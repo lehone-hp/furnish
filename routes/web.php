@@ -16,13 +16,13 @@
 //        PAGES ROUTES
 // ==================================== /
 
-Route::get('/', 'PagesController@getIndex');
-Route::get('/contact', 'PagesController@getContact');
-Route::get('/shop', 'PagesController@getShop');
-Route::get('/product/{id}', 'PagesController@getProductDetails');
-Route::get('/checkout', 'PagesController@getCheckout');
-Route::get('/login', 'PagesController@getLogin');
-Route::get('/register', 'PagesController@getRegister');
+Route::get('/', 'PagesController@getIndex')->name('index');;
+Route::get('/contact', 'PagesController@getContact')->name('contact');
+Route::get('/shop', 'PagesController@getShop')->name('shop');
+Route::get('/product/{id}', 'PagesController@getProductDetails')->name('product.details');
+Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
+Route::get('/login', 'PagesController@getLogin')->name('login');
+Route::get('/register', 'PagesController@getRegister')->name('register');
 
 
 //======================================/
@@ -43,8 +43,8 @@ Route::get('/register', 'PagesController@getRegister');
 // ==================================== /
 
 
-Route::get('/wishlist', 'WishListController@getWishList');
-Route::get('/cart', 'CartController@getCart');
+Route::get('/wishlist', 'WishListController@getWishList')->name('wishlist');
+Route::get('/cart', 'CartController@getCart')->name('cart');
 
 
 

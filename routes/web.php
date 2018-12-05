@@ -29,7 +29,16 @@ Route::get('/register', 'PagesController@getRegister')->name('register');
 //        ADMIN ROUTES
 // ==================================== /
 
+Route::get('/admin/login', 'Admin\AdminController@getLogin')->name('admin.login');
+Route::post('/admin/login', 'Admin\AdminController@authenticateAdmin')->name('admin.login');
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
+    Route::get('dashboard', 'Admin\AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/profile', 'Admin\AdminController@getProfile')->name('admin.profile');
+    Route::get('/password', 'Admin\AdminController@getPassword')->name('admin.password');
+
+
+});
 
 
 //======================================/

@@ -10,7 +10,12 @@ class AdminController extends Controller
 {
 
     public function getLogin(){
-        return view('admin.login');
+
+        if(\Cookie::get('_furnish_admin') != null){
+            return redirect('/admin/dashboard');
+        }else{
+            return view('admin.login');
+        }
     }
 
     // function to authenticate admin
@@ -32,6 +37,13 @@ class AdminController extends Controller
         $admin = $this->current_admin();
         return view('admin.index')->withAdmin($admin);
     }
+
+    // function to logout admin
+    public function logoutAdmin()
+    {
+        return redirect('/admin/login')->withCookie(cookie()->forget('_furnish_admin'));
+    }
+
 
 
     //return the current logged admin

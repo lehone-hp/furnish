@@ -36,7 +36,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
     Route::get('dashboard', 'Admin\AdminController@dashboard')->name('admin.dashboard');
     Route::get('/profile', 'Admin\AdminController@getProfile')->name('admin.profile');
     Route::get('/password', 'Admin\AdminController@getPassword')->name('admin.password');
-
+    Route::post('/logout', 'Admin\AdminController@logoutAdmin')->name('admin.logout');
+    Route::resource('/clients', 'Admin\ClientController');
+    Route::resource('/orders', 'Admin\OrderController');
+    Route::resource('/products', 'Admin\ProductController');
 
 });
 

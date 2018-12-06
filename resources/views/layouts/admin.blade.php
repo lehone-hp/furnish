@@ -52,109 +52,44 @@
             <div class="page-sidebar-menu">
                 <ul class="accordion-menu">
                     <li class="active-page">
-                        <a href="index.html">
+                        <a href="{{ route('admin.dashboard') }}">
                             <i class="menu-icon icon-home4"></i><span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="email.html">
-                            <i class="menu-icon icon-inbox"></i><span>Email</span>
+                        <a href="/inbox">
+                            <i class="menu-icon icon-inbox"></i><span>Inbox</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-flash_on"></i><span>UI Kits</span><i class="accordion-icon fa fa-angle-left"></i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="ui-alerts.html">Alerts</a></li>
-                            <li><a href="ui-buttons.html">Buttons</a></li>
-                            <li><a href="ui-icons.html">Icons</a></li>
-                            <li><a href="ui-typography.html">Typography</a></li>
-                            <li><a href="ui-notifications.html">Notifications</a></li>
-                            <li><a href="ui-modals.html">Modals</a></li>
-                            <li><a href="ui-progress.html">Progress Bars</a></li>
-                            <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                            <li><a href="ui-tree-view.html">Tree View</a></li>
-                            <li><a href="ui-nestable.html">Nestable</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-layers"></i><span>Layouts</span><i class="accordion-icon fa fa-angle-left"></i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="layout-blank.html">Blank Page</a></li>
-                            <li><a href="layout-boxed.html">Boxed Layout</a></li>
-                            <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>
-                            <li><a href="layout-fixed-header.html">Fixed Header</a></li>
-                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                            <li><a href="layout-fixed-sidebar-header.html">Fixed Sidebar &amp; Header</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-code"></i><span>Forms</span><i class="accordion-icon fa fa-angle-left"></i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="form-elements.html">Elements</a></li>
-                            <li><a href="form-wizard.html">Form Wizard</a></li>
-                            <li><a href="form-file-upload.html">File Upload</a></li>
-                            <li><a href="form-image-crop.html">Image Crop</a></li>
-                            <li><a href="form-image-zoom.html">Image Zoom</a></li>
-                            <li><a href="form-x-editable.html">X-editable</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-format_list_bulleted"></i><span>Tables</span><i class="accordion-icon fa fa-angle-left"></i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="table-static.html">Static</a></li>
-                            <li><a href="table-responsive.html">Responsive</a></li>
-                            <li><a href="table-data.html">Data Tables</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="charts.html">
-                            <i class="menu-icon icon-show_chart"></i><span>Charts</span>
+                        <a href="/clients">
+                            <i class="menu-icon icon-users"></i><span>Clients</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-my_location"></i><span>Maps</span><i class="accordion-icon fa fa-angle-left"></i>
+                        <a href="/orders">
+                            <i class="menu-icon icon-gift"></i><span>Orders</span>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="maps-google.html">Google</a></li>
-                            <li><a href="maps-vector.html">Vector</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <i class="menu-icon icon-star"></i><span>Extra</span><i class="accordion-icon fa fa-angle-left"></i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="404.html">404 Page</a></li>
-                            <li><a href="500.html">500 Page</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="lockscreen.html">Lockscreen</a></li>
-                            <li><a href="todo.html">Todo</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="pricing-tables.html">Pricing Tables</a></li>
-                            <li><a href="timeline.html">Timeline</a></li>
-                        </ul>
                     </li>
                     <li class="menu-divider"></li>
+
                     <li>
-                        <a href="index.html">
-                            <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-box-add"></i><span>Products</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="ui-alerts.html">Upload Products</a></li>
+                            <li><a href="ui-alerts.html">View All products</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/shop">
+                            <i class="menu-icon icon-cart"></i><span>View Shop</span><span class="label label-danger">shop</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index.html">
-                            <i class="menu-icon icon-public"></i><span>Changelog</span><span class="label label-danger">1.0</span>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();" style="color: firebrick">
+                            <i class="menu-icon icon-key"></i><span>Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -162,8 +97,109 @@
         </div>
     </div><!-- /Page Sidebar -->
 
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="search-form">
+                <form action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input" placeholder="Type something...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default" id="close-search" type="button"><i class="icon-close"></i></button>
+                                </span>
+                    </div>
+                </form>
+            </div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <div class="logo-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
+                            <a class="logo-box" href="index.html"><span>Space</span></a>
+                        </div>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="javascript:void(0)" id="collapsed-sidebar-toggle-button"><i class="fa fa-bars"></i></a></li>
+                            <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fa fa-expand"></i></a></li>
+                            <li><a href="javascript:void(0)" id="search-button"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="javascript:void(0)" class="right-sidebar-toggle" data-sidebar-id="main-right-sidebar"><i class="fa fa-envelope"></i></a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></a>
+                                <ul class="dropdown-menu dropdown-lg dropdown-content">
+                                    <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i class="fa fa-angle-right"></i></a></li>
+                                    <li class="slimscroll dropdown-notifications">
+                                        <ul class="list-unstyled dropdown-oc">
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-primary"><i class="fa fa-photo"></i></span>
+                                                    <span class="notification-info">Finished uploading photos to gallery <b>"South Africa"</b>.
+                                                                <small class="notification-date">20:00</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-primary"><i class="fa fa-at"></i></span>
+                                                    <span class="notification-info"><b>John Doe</b> mentioned you in a post "Update v1.5".
+                                                                <small class="notification-date">06:07</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-danger"><i class="fa fa-bolt"></i></span>
+                                                    <span class="notification-info">4 new special offers from the apps you follow!
+                                                                <small class="notification-date">Yesterday</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-success"><i class="fa fa-bullhorn"></i></span>
+                                                    <span class="notification-info">There is a meeting with <b>Ethan</b> in 15 minutes!
+                                                                <small class="notification-date">Yesterday</small>
+                                                            </span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown user-dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('admin.profile') }}">Profile</a></li>
+                                    <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="#" style="color: red"
+                                           onclick="event.preventDefault(); document.getElementById('logout').submit(); ">
+                                            <i class="ti-lock"></i> Logout
+                                            <form id="logout" action="{{ route('admin.logout') }}" method="POST"
+                                                  style="display: none">
+                                                {{csrf_field()}}
+                                            </form>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <!-- /Page Header -->
+
     <!-- Page Content -->
         @yield('content')
+    <!-- /Page Content -->
+
+
+    </div>
     <!-- /Page Content -->
 
 

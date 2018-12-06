@@ -3262,7 +3262,8 @@ a.meanmenu-reveal i {
 .login-reg-form form label.inline {
   margin: 10px 0 0;
 }
-.login-reg-form form label .required {
+.login-reg-form form label .required,
+form span.invalid-feedback {
   color: #ff0000;
 }
 .login-reg-form form input[type="text"], .login-reg-form form input[type="email"], .login-reg-form form input[type="password"] {

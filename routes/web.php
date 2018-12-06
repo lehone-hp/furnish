@@ -21,9 +21,6 @@ Route::get('/contact', 'PagesController@getContact')->name('contact');
 Route::get('/shop', 'PagesController@getShop')->name('shop');
 Route::get('/product/{id}', 'PagesController@getProductDetails')->name('product.details');
 Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
-Route::get('/login', 'PagesController@getLogin')->name('login');
-Route::get('/register', 'PagesController@getRegister')->name('register');
-
 
 //======================================/
 //        ADMIN ROUTES
@@ -47,7 +44,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
 //======================================/
 //        CLIENT ROUTES
 // ==================================== /
-Route::group(['prefix' => 'client'], function () {
+
+Auth::routes();
+Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect("/");
+    })->name('client.logout');
     Route::get('/dashboard', 'Client\ClientController@getIndex')->name('client.dashboard');
     Route::get('/password', 'Client\ClientController@getPassword')->name('client.password');
     Route::get('/profile', 'Client\ClientController@getProfile')->name('client.profile');
@@ -71,4 +74,3 @@ Route::get('/cart', 'CartController@getCart')->name('cart');
 //======================================/
 //        GET IMAGES ROUTES
 // ==================================== /
-

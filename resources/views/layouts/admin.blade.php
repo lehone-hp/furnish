@@ -1,230 +1,189 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Admin Dashboard">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title Page-->
-    <title>Admin Dashboard - @yield('title')</title>
+    <!-- Title -->
+    <title>@yield('title')</title>
 
-    <!-- Fontfaces CSS-->
-    <link href="{{ asset('client/css/font-face.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/admin/plugins/icomoon/style.css" rel="stylesheet">
+    <link href="/admin/plugins/uniform/css/default.css" rel="stylesheet"/>
+    <link href="/admin/plugins/switchery/switchery.min.css" rel="stylesheet"/>
+    <link href="/admin/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS-->
-    <link href="{{ asset('client/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+    <!-- Theme Styles -->
+    <link href="/admin/css/space.min.css" rel="stylesheet">
+    <link href="/admin/css/themes/admin3.css" rel="stylesheet">
+    <link href="/admin/css/custom.css" rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="{{ asset('client/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('client/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
-
-    <!-- Datatables-->
-    <link href="{{asset("DataTables/datatables.min.css")}}" rel="stylesheet">
-
-    <!-- Main CSS-->
-    <link href="{{ asset('client/css/theme.css') }}" rel="stylesheet" media="all">
-
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<body>
 
-<body class="animsition">
-<div class="page-wrapper">
-    <!-- HEADER MOBILE-->
-    <header class="header-mobile d-block d-lg-none">
-        <div class="header-mobile__bar">
-            <div class="container-fluid">
-                <div class="header-mobile-inner">
-                    <a class="logo" href="{{ route('index') }}">
-                        <img src="{{ asset('img/logo.png') }}" alt="Furnish" />
-                    </a>
-                    <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar-mobile">
-            <div class="container-fluid">
-                <ul class="navbar-mobile__list list-unstyled">
-                    <li class="active has-sub">
-                        <a class="js-arrow" href="{{ route('client.dashboard') }}">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+<!-- Page Container -->
+<div class="page-container">
+    <!-- Page Sidebar -->
+    <div class="page-sidebar">
+        <a class="logo-box" href="index.html">
+            <span>Space</span>
+            <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
+            <i class="icon-close" id="sidebar-toggle-button-close"></i>
+        </a>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul class="accordion-menu">
+                    <li class="active-page">
+                        <a href="index.html">
+                            <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('client.profile') }}">
-                            <i class="fas fa-user"></i>User Profile</a>
+                        <a href="email.html">
+                            <i class="menu-icon icon-inbox"></i><span>Email</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('client.orders') }}">
-                            <i class="fas fa-shopping-cart"></i>Order List</a>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-flash_on"></i><span>UI Kits</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="ui-alerts.html">Alerts</a></li>
+                            <li><a href="ui-buttons.html">Buttons</a></li>
+                            <li><a href="ui-icons.html">Icons</a></li>
+                            <li><a href="ui-typography.html">Typography</a></li>
+                            <li><a href="ui-notifications.html">Notifications</a></li>
+                            <li><a href="ui-modals.html">Modals</a></li>
+                            <li><a href="ui-progress.html">Progress Bars</a></li>
+                            <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
+                            <li><a href="ui-tree-view.html">Tree View</a></li>
+                            <li><a href="ui-nestable.html">Nestable</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="{{ route('client.wishlist') }}">
-                            <i class="fas fa-heart"></i>Wishlist</a>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-layers"></i><span>Layouts</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="layout-blank.html">Blank Page</a></li>
+                            <li><a href="layout-boxed.html">Boxed Layout</a></li>
+                            <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>
+                            <li><a href="layout-fixed-header.html">Fixed Header</a></li>
+                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
+                            <li><a href="layout-fixed-sidebar-header.html">Fixed Sidebar &amp; Header</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="{{ route('client.password') }}">
-                            <i class="fas fa-key"></i>Change Password</a>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-code"></i><span>Forms</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="form-elements.html">Elements</a></li>
+                            <li><a href="form-wizard.html">Form Wizard</a></li>
+                            <li><a href="form-file-upload.html">File Upload</a></li>
+                            <li><a href="form-image-crop.html">Image Crop</a></li>
+                            <li><a href="form-image-zoom.html">Image Zoom</a></li>
+                            <li><a href="form-x-editable.html">X-editable</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fas fa-power-off"></i>Logout</a>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-format_list_bulleted"></i><span>Tables</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="table-static.html">Static</a></li>
+                            <li><a href="table-responsive.html">Responsive</a></li>
+                            <li><a href="table-data.html">Data Tables</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="charts.html">
+                            <i class="menu-icon icon-show_chart"></i><span>Charts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-my_location"></i><span>Maps</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="maps-google.html">Google</a></li>
+                            <li><a href="maps-vector.html">Vector</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-star"></i><span>Extra</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="404.html">404 Page</a></li>
+                            <li><a href="500.html">500 Page</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                            <li><a href="lockscreen.html">Lockscreen</a></li>
+                            <li><a href="todo.html">Todo</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="pricing-tables.html">Pricing Tables</a></li>
+                            <li><a href="timeline.html">Timeline</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li>
+                        <a href="index.html">
+                            <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="menu-icon icon-public"></i><span>Changelog</span><span class="label label-danger">1.0</span>
+                        </a>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </header>
-    <!-- END HEADER MOBILE-->
-
-    <!-- MENU SIDEBAR-->
-    <aside class="menu-sidebar d-none d-lg-block">
-        <div class="logo">
-            <a href="{{ route('index') }}">
-                <img src="{{ asset('img/logo.png') }}" alt="Cool Admin" />
-            </a>
         </div>
-        <div class="menu-sidebar__content js-scrollbar1">
-            <nav class="navbar-sidebar">
-                <ul class="list-unstyled navbar__list">
-                    <li class="active has-sub">
-                        <a class="js-arrow" href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.profile') }}">
-                            <i class="fas fa-user"></i>User Profile</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.password') }}">
-                            <i class="fas fa-key"></i>Change Password</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-power-off"></i>Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </aside>
-    <!-- END MENU SIDEBAR-->
+    </div><!-- /Page Sidebar -->
 
-    <!-- PAGE CONTAINER-->
-    <div class="page-container">
-        <!-- HEADER DESKTOP-->
-        <header class="header-desktop">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="header-wrap">
-                        <form class="form-header" action="#" method="POST">
-                            <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                            <button class="au-btn--submit" type="submit">
-                                <i class="zmdi zmdi-search"></i>
-                            </button>
-                        </form>
-                        <div class="header-button">
-                            <div class="account-wrap">
-                                <div class="account-item clearfix js-item-menu">
-                                    <div class="image">
-                                        <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="John Doe" />
-                                    </div>
-                                    <div class="content">
-                                        <a class="js-acc-btn" href="#">john doe</a>
-                                    </div>
-                                    <div class="account-dropdown js-dropdown">
-                                        <div class="info clearfix">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="John Doe" />
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="name">
-                                                    <a href="{{ route('admin.profile') }}">john doe</a>
-                                                </h5>
-                                                <span class="email">johndoe@example.com</span>
-                                            </div>
-                                        </div>
-                                        <div class="account-dropdown__body">
-                                            <div class="account-dropdown__item">
-                                                <a href="{{ route('admin.profile') }}">
-                                                    <i class="zmdi zmdi-account"></i>Edit Profile</a>
-                                            </div>
-                                        </div>
-                                        <div class="account-dropdown__footer">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-power"></i>Logout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- HEADER DESKTOP-->
+    <!-- Page Content -->
+        @yield('content')
+    <!-- /Page Content -->
 
-        <!-- MAIN CONTENT-->
-        <div class="main-content">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
-            </div>
-        </div>
-        <!-- END MAIN CONTENT-->
-
-        <!-- FOOTER -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <p>Copyright © 2018 Furnish. All rights reserved. Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>.</p>
-                </div>
-            </div>
-        </div>
-        <!-- END FOOTER -->
-        <!-- END PAGE CONTAINER-->
-    </div>
 
 </div>
+<!-- /Page Container -->
 
-<!-- Jquery JS-->
-<script src="{{ asset('client/vendor/jquery-3.2.1.min.js') }}"></script>
-<!-- Bootstrap JS-->
-<script src="{{ asset('client/vendor/bootstrap-4.1/popper.min.js') }}"></script>
-<script src="{{ asset('client/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
-<!-- Data table-->
-<script src="{{ asset("DataTables/datatables.js") }}"></script>
-<!-- Vendor JS       -->
-<script src="{{ asset('client/vendor/slick/slick.min.js') }}">
-</script>
-<script src="{{ asset('client/vendor/wow/wow.min.js') }}"></script>
-<script src="{{ asset('client/vendor/animsition/animsition.min.js') }}"></script>
-<script src="{{ asset('client/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-</script>
-<script src="{{ asset('client/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('client/vendor/counter-up/jquery.counterup.min.js') }}">
-</script>
-<script src="{{ asset('client/vendor/circle-progress/circle-progress.min.js') }}"></script>
-<script src="{{ asset('client/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-<script src="{{ asset('client/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-<script src="{{ asset('client/vendor/select2/select2.min.js') }}">
-</script>
 
-<!-- Main JS-->
-<script src="{{ asset('client/js/main.js') }}"></script>
-
+<!-- Javascripts -->
+<script src="/admin/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/admin/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/admin/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+<script src="/admin/plugins/switchery/switchery.min.js"></script>
+<script src="/admin/plugins/d3/d3.min.js"></script>
+<script src="/admin/plugins/nvd3/nv.d3.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.time.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.symbol.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/admin/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="/admin/plugins/chartjs/chart.min.js"></script>
+<script src="/admin/js/space.min.js"></script>
+<script src="/admin/js/pages/dashboard.js"></script>
 </body>
-
 </html>
-<!-- end document-->

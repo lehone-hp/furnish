@@ -64,9 +64,14 @@
                             <ul>
                                 <li><a href="#" data-toggle="dropdown"><i class="pe-7s-config"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ route('login') }}">Log in</a></li>
-                                        <li><a href="{{ route('register') }}">Register</a></li>
-                                        <li><a href="{{ route('client.dashboard') }}">Client Dashboard</a></li>
+                                        @guest
+                                            <li><a href="{{ route('login') }}">Log in</a></li>
+                                            <li><a href="{{ route('register') }}">Register</a></li>
+                                        @endguest
+                                        @auth
+                                            <li><a href="{{ route('client.dashboard') }}">Client Dashboard</a></li>
+                                            <li><a href="{{ route('client.logout') }}">Logout</a></li>
+                                        @endauth
                                     </ul>
                                 </li>
                             </ul>
@@ -181,9 +186,9 @@
         </div>
     </div>
 
-    @yield('content')
+@yield('content')
 
-    <!-- Page footer -->
+<!-- Page footer -->
     <!-- SERVICE SECTION START -->
     <div class="service-section section pt-70 pb-40">
         <div class="container">

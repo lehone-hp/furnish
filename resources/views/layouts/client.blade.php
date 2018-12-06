@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+
     <!-- Title Page-->
     <title>Client Dashboard - @yield('title')</title>
 
@@ -77,7 +80,11 @@
                             <i class="fas fa-key"></i>Change Password</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('shop') }}">
+                            <i class="fas fa-shopping-basket"></i>Shop</a>
+                    </li>
+                    <li>
+                        <a href="{{ route("client.logout") }}">
                             <i class="fas fa-power-off"></i>Logout</a>
                     </li>
                 </ul>
@@ -117,7 +124,11 @@
                             <i class="fas fa-key"></i>Change Password</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('shop') }}">
+                            <i class="fas fa-shopping-basket"></i>Shop</a>
+                    </li>
+                    <li>
+                        <a href="{{ route("client.logout") }}">
                             <i class="fas fa-power-off"></i>Logout</a>
                     </li>
                 </ul>
@@ -169,7 +180,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="#">
+                                            <a href="{{ route("client.logout") }}">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>

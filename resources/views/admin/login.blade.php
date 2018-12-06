@@ -1,112 +1,90 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Admin template">
-    <meta name="author" content="Lehone & Rachmann">
-    <meta name="keywords" content="au theme template">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Admin Dashboard">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title Page-->
-    <title>Admin Logn</title>
+    <!-- Title -->
+    <title>Dashboard - Login</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
 
-    <!-- Fontfaces CSS-->
-    <link href="/client/css/font-face.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/admin/plugins/icomoon/style.css" rel="stylesheet">
+    <link href="/admin/plugins/uniform/css/default.css" rel="stylesheet"/>
+    <link href="/admin/plugins/switchery/switchery.min.css" rel="stylesheet"/>
 
-    <!-- Bootstrap CSS-->
-    <link href="/client/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <!-- Theme Styles -->
+    <link href="/admin/css/space.min.css" rel="stylesheet">
+    <link href="/admin/css/themes/admin3.css" rel="stylesheet">
+    <link href="/admin/css/custom.css" rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="/client/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="/client/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="/client/css/theme.css" rel="stylesheet" media="all">
-
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<body>
 
-<body class="animsition">
-<div class="page-wrapper">
-    <div class="page-content--bge5">
-        <div class="container">
-            <div class="login-wrap">
-                <div class="login-content">
-                    <div class="login-logo">
-                        <a href="#">
-                            <img src="{{ asset('img/logo.png') }}" alt="Admin Logo">
-                        </a>
-                    </div>
+<!-- Page Container -->
+<div class="page-container">
+    <!-- Page Inner -->
+    <div class="page-inner login-page">
+        <div id="main-wrapper" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 login-box">
+                    <a class="logo" href="{{ route('index') }}">
+                        <img src="{{ asset('img/logo.png') }}" alt="Furnish"  style="width: 80%;"/>
+                    </a>
+                    <h4 class="login-title">Sign in to your account</h4>
                     @if(session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p>{{ session()->get('error') }}</p>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <p>{{ session()->get('error') }}</p>
+                        </div>
                     @endif
-                    <div class="login-form">
-                        <form action="{{ route('admin.login') }}" method="POST">
-                            {{ @csrf_field() }}
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
-                            </div>
-                            <div class="login-checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember" checked>Remember Me
-                                </label>
-                                <label>
-                                    <a href="#">Forgotten Password?</a>
-                                </label>
-                            </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                        </form>
-                    </div>
+                    <form action="{{ route('admin.login') }}" method="POST">
+                        {{ @csrf_field() }}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button><br>
+                        <a href="/admin/forgot-password" class="forgot-link">Forgot password?</a>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- /Page Content -->
+</div><!-- /Page Container -->
 
-</div>
 
-<!-- Jquery JS-->
-<script src="/client/vendor/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap JS-->
-<script src="/client/vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="/client/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-<!-- Vendor JS       -->
-<script src="/client/vendor/slick/slick.min.js">
-</script>
-<script src="/client/vendor/wow/wow.min.js"></script>
-<script src="/client/vendor/animsition/animsition.min.js"></script>
-<script src="/client/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-</script>
-<script src="/client/vendor/counter-up/jquery.waypoints.min.js"></script>
-<script src="/client/vendor/counter-up/jquery.counterup.min.js">
-</script>
-<script src="/client/vendor/circle-progress/circle-progress.min.js"></script>
-<script src="/client/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="/client/vendor/chartjs/Chart.bundle.min.js"></script>
-<script src="/client/vendor/select2/select2.min.js">
-</script>
+<!-- Javascripts -->
+<script src="/admin/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/admin/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/admin/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+<script src="/admin/plugins/switchery/switchery.min.js"></script>
+<script src="/admin/js/space.min.js"></script>
 
-<!-- Main JS-->
-<script src="/client/js/main.js"></script>
 
-</body>
 
-</html>
-<!-- end document-->
+
+
+
+

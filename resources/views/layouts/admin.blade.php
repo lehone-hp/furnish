@@ -13,6 +13,9 @@
     <!-- Title -->
     <title>@yield('title')</title>
 
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +43,8 @@
 <div class="page-container">
     <!-- Page Sidebar -->
     <div class="page-sidebar">
-        <a class="logo-box" href="index.html">
-            <span>Space</span>
+        <a class="logo-box" href="{{ route('index') }}">
+            <img src="{{ asset('img/logo.png') }}" class="img-responsive"><span>FURNISH</span>
             <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
             <i class="icon-close" id="sidebar-toggle-button-close"></i>
         </a>

@@ -1,1 +1,11 @@
 /* Write your custom CSS here */
+
+.user-verify{
+    position: relative;
+}
+
+img.verify-status{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

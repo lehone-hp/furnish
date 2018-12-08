@@ -18,17 +18,21 @@
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link href="/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/admin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/admin/plugins/icomoon/style.css" rel="stylesheet">
-    <link href="/admin/plugins/uniform/css/default.css" rel="stylesheet"/>
-    <link href="/admin/plugins/switchery/switchery.min.css" rel="stylesheet"/>
-    <link href="/admin/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
+    <link href="/myadmin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/myadmin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/myadmin/plugins/icomoon/style.css" rel="stylesheet">
+    <link href="/myadmin/plugins/uniform/css/default.css" rel="stylesheet"/>
+    <link href="/myadmin/plugins/switchery/switchery.min.css" rel="stylesheet"/>
+    <link href="/myadmin/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
+    <link href="/myadmin/plugins/gridgallery/css/component.css" rel="stylesheet">
 
     <!-- Theme Styles -->
-    <link href="/admin/css/space.min.css" rel="stylesheet">
-    <link href="/admin/css/themes/admin3.css" rel="stylesheet">
-    <link href="/admin/css/custom.css" rel="stylesheet">
+    <link href="/myadmin/css/space.min.css" rel="stylesheet">
+    <link href="/myadmin/css/themes/admin3.css" rel="stylesheet">
+    <link href="/myadmin/css/custom.css" rel="stylesheet">
+
+    <script src="/myadmin/plugins/gridgallery/js/modernizr.custom.js"></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,23 +55,22 @@
         <div class="page-sidebar-inner">
             <div class="page-sidebar-menu">
                 <ul class="accordion-menu">
-                    <li class="active-page">
+                    <li class="{{ Request::is('admin/dashboard') ? "active-page":"" }}">
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="menu-icon icon-home4"></i><span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="/inbox">
+                    <li class="{{ Request::is('admin/inbox*') ? "active-page":"" }}">
+                        <a href="/admin/inbox">
                             <i class="menu-icon icon-inbox"></i><span>Inbox</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="/clients">
+                    <li class="{{ Request::is('admin/clients*') ? "active-page":"" }}">
+                        <a href="/admin/clients">
                             <i class="menu-icon icon-users"></i><span>Clients</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="/orders">
+                    <li class="{{ Request::is('admin/orders*') ? "active-page":"" }}">
+                        <a href="/admin/orders">
                             <i class="menu-icon icon-gift"></i><span>Orders</span>
                         </a>
                     </li>
@@ -208,21 +211,27 @@
 
 
 <!-- Javascripts -->
-<script src="/admin/plugins/jquery/jquery-3.1.0.min.js"></script>
-<script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/admin/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/admin/plugins/uniform/js/jquery.uniform.standalone.js"></script>
-<script src="/admin/plugins/switchery/switchery.min.js"></script>
-<script src="/admin/plugins/d3/d3.min.js"></script>
-<script src="/admin/plugins/nvd3/nv.d3.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.time.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.symbol.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.resize.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="/admin/plugins/flot/jquery.flot.pie.min.js"></script>
-<script src="/admin/plugins/chartjs/chart.min.js"></script>
-<script src="/admin/js/space.min.js"></script>
-<script src="/admin/js/pages/dashboard.js"></script>
+<script src="/myadmin/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script src="/myadmin/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/myadmin/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/myadmin/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+<script src="/myadmin/plugins/switchery/switchery.min.js"></script>
+<script src="/myadmin/plugins/d3/d3.min.js"></script>
+<script src="/myadmin/plugins/nvd3/nv.d3.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.time.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.symbol.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/myadmin/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="/myadmin/plugins/chartjs/chart.min.js"></script>
+<script src="/myadmin/plugins/switchery/switchery.min.js"></script>
+<script src="/myadmin/plugins/gridgallery/js/imagesloaded.pkgd.min.js"></script>
+<script src="/myadmin/plugins/gridgallery/js/masonry.pkgd.min.js"></script>
+<script src="/myadmin/plugins/gridgallery/js/classie.js"></script>
+<script src="/myadmin/plugins/gridgallery/js/cbpgridgallery.js"></script>
+<script src="/myadmin/js/space.min.js"></script>
+<script src="/myadmin/js/pages/dashboard.js"></script>
+<script src="/myadmin/js/admin.js"></script>
 </body>
 </html>

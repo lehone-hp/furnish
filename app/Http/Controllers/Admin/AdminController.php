@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
 
+    public function getIndex(){
+        return redirect('/admin/login');
+    }
+
     public function getLogin(){
 
         if(\Cookie::get('_furnish_admin') != null){

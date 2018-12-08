@@ -18,7 +18,7 @@ class AdminAuth
         if(\Cookie::get('_furnish_admin') != null){
             return $next($request);
         }else{
-            return redirect('/');
+            return redirect('/admin/login');
         }
     }
 }

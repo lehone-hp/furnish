@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = User::paginate(20);
+        return view('admin.clients.index', compact('clients'));
     }
 
     /**
@@ -46,7 +48,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = User::find($id);
+        return view('admin.clients.single',compact('client'));
     }
 
     /**

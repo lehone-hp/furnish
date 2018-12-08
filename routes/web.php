@@ -27,6 +27,7 @@ Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
 // ==================================== /
 
 Route::get('/admin/login', 'Admin\AdminController@getLogin')->name('admin.login');
+Route::get('/admin', 'Admin\AdminController@getIndex')->name('admin');
 Route::post('/admin/login', 'Admin\AdminController@authenticateAdmin')->name('admin.login');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {

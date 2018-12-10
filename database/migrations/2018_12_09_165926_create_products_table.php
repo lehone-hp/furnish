@@ -17,11 +17,10 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('category_id');
             $table->string('name');
-            $table->string('display_name');
+            $table->string('slug');
             $table->text('description');
             $table->float('price');
             $table->float('old_price')->nullable();
-            $table->integer('quantity');
             $table->string('photo')->nullable();
             $table->integer('min_order')->default(1);
             $table->boolean('in_stock')->default(true);

@@ -14734,3 +14734,8 @@ section {
     margin: 5px 15px;
 }
 
+form span.invalid-feedback {
+    color: #ff0000;
+    display: block;
+    font-weight: normal;
+}

@@ -30,6 +30,10 @@ class User extends Authenticatable {
         'password', 'remember_token',
     ];
 
+    public function fullName() {
+        return $this->firstname." ".$this->lastname;
+    }
+
     public function orderItems() {
         return $this->hasMany('App\OrderItem');
     }

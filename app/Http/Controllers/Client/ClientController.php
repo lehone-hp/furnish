@@ -10,6 +10,9 @@ namespace App\Http\Controllers\Client;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller {
 
@@ -18,7 +21,39 @@ class ClientController extends Controller {
     }
 
     public function getProfile() {
-        return view('client.profile');
+        $user = Auth::user();
+        return view('client.profile', compact('user'));
+    }
+
+    public function postProfile(Request $request) {
+        $this->validate($request, [
+            'firstname' => ['required', 'string', 'max:191'],
+            'lastname' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'email', 'max:191'],
+            'phone' => ['required', 'string'],
+            'country' => ['required'],
+            'address' => ['required', 'string', 'max:191'],
+            'city' => ['required', 'string', 'max:191'],
+            'state' => ['required', 'string', 'max:191'],
+            'zip' => ['required', 'string'],
+        ]);
+
+        $data = $request->all();
+
+        $user = Auth::user();
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+        $user->country = $data['country'];
+        $user->address = $data['address'];
+        $user->city = $data['city'];
+        $user->state = $data['state'];
+        $user->zip = $data['zip'];
+        $user->update();
+
+        return back();
+
     }
 
     public function getOrders() {

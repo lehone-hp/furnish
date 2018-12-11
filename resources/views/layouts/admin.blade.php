@@ -13,7 +13,7 @@
     <!-- Title -->
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
 
     <!-- Styles -->

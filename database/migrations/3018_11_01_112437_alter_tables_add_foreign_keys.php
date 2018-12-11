@@ -47,6 +47,19 @@ class AlterTablesAddForeignKeys extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        /** wish_lists */
+        Schema::table('wish_lists', function (Blueprint $table) {
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

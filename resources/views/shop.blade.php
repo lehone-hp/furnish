@@ -380,19 +380,6 @@
                         </ul>
                     </div>
 
-                    <div class="single-sidebar mb-40">
-                        <h3 class="sidebar-title">Popular Tags</h3>
-                        <div class="tag-cloud">
-                            <a href="#">Chairs</a>
-                            <a href="#">Tables</a>
-                            <a href="#">Sofas</a>
-                            <a href="#">Lights</a>
-                            <a href="#">Lamps</a>
-                            <a href="#">curtains</a>
-                            <a href="#">cabinets</a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

@@ -270,17 +270,15 @@
                 </div>
                 <!-- Footer Widget -->
                 <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">
-                    <h4 class="widget-title">tags</h4>
-                    <div class="tag-cloud fix">
-                        <a href="#">brand</a>
-                        <a href="#">fashion</a>
-                        <a href="#">sale</a>
-                        <a href="#">winter sale</a>
-                        <a href="#">summer sale</a>
-                        <a href="#">men</a>
-                        <a href="#">women</a>
-                        <a href="#">kids</a>
-                    </div>
+                    <h4 class="widget-title">quick links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/shop">Chair</a></li>
+                        <li><a href="/shop">Tables</a></li>
+                        <li><a href="/shop">Cabinets</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
                 </div>
                 <!-- Footer Widget -->
                 <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">

@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller {
@@ -52,6 +53,7 @@ class ClientController extends Controller {
         $user->zip = $data['zip'];
         $user->update();
 
+        $request->session()->flash('success', 'Profile successfully update');
         return back();
 
     }
@@ -70,5 +72,33 @@ class ClientController extends Controller {
 
     public function getPassword() {
         return view('client.password');
+    }
+
+    public function postPassword(Request $request) {
+        $messages = [
+            'current-password.required' => 'Please enter old password',
+            'password.required' => 'Please enter password',
+        ];
+
+        $this->validate($request, [
+            'current-password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ], $messages);
+
+        $data = $request->all();
+
+        $current_password = Auth::User()->password;
+        if(! Hash::check($data['current-password'], $current_password)) {
+            $request->session()->flash("error","Your current password does not match with the password you provided");
+            return redirect()->back();
+        }
+
+        $user = Auth::user();
+        $user->password = Hash::make($data['password']);
+        $user->update();
+
+        $request->session()->flash('success', 'Password successfully changed');
+        return back();
+
     }
 }

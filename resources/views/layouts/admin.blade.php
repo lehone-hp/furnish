@@ -25,6 +25,9 @@
     <link href="/myadmin/plugins/switchery/switchery.min.css" rel="stylesheet"/>
     <link href="/myadmin/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
     <link href="/myadmin/plugins/gridgallery/css/component.css" rel="stylesheet">
+    <link href="/myadmin/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
+    <link href="/myadmin/plugins/toastr/toastr.min.css" rel="stylesheet">
+
 
     <!-- Theme Styles -->
     <link href="/myadmin/css/space.min.css" rel="stylesheet">
@@ -81,10 +84,18 @@
                             <i class="menu-icon icon-box-add"></i><span>Products</span><i class="accordion-icon fa fa-angle-left"></i>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="ui-alerts.html">Upload Products</a></li>
-                            <li><a href="ui-alerts.html">View All products</a></li>
+                            <li><a href="/admin/products/create">Upload Products</a></li>
+                            <li><a href="/admin/products">View All products</a></li>
                         </ul>
                     </li>
+
+                    <li class="menu-divider"></li>
+                    <li class="{{ Request::is('admin/categories*') ? "active-page":"" }}">
+                        <a href="/admin/categories">
+                            <i class="menu-icon icon-add_to_queue"></i><span>Categories</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="/shop">
                             <i class="menu-icon icon-cart"></i><span>View Shop</span><span class="label label-danger">shop</span>
@@ -229,9 +240,43 @@
 <script src="/myadmin/plugins/gridgallery/js/imagesloaded.pkgd.min.js"></script>
 <script src="/myadmin/plugins/gridgallery/js/masonry.pkgd.min.js"></script>
 <script src="/myadmin/plugins/gridgallery/js/classie.js"></script>
+<script src="/myadmin/plugins/summernote-master/summernote.min.js"></script>
 <script src="/myadmin/plugins/gridgallery/js/cbpgridgallery.js"></script>
 <script src="/myadmin/js/space.min.js"></script>
+<script src="/myadmin/plugins/toastr/toastr.min.js"></script>
 <script src="/myadmin/js/pages/dashboard.js"></script>
 <script src="/myadmin/js/admin.js"></script>
 </body>
+
+    <script type="text/javascript">
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "hideDuration": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            @if(count($errors))
+                @foreach($errors->all() as $error)
+                    toastr.error('{{$error}}');
+                @endforeach
+            @endif
+
+            @if(session()->has('success'))
+            toastr.success('{{session()->get("success")}}');
+            @endif
+
+            @if(session()->has('error'))
+            toastr.error('{{session()->get("error") }}');
+            @endif
+
+    </script>
+
 </html>

@@ -49,27 +49,45 @@
                     <div class="panel panel-white">
                         <div class="panel-heading clearfix">
                             <h3 class="panel-title">Order Details</h3>
-                            <a href="#" class="pull-right"><h4 class="text-success" style="text-decoration: underline;">Product Name</h4></a>
+                            <a href="#" class="pull-right"><h4 class="text-success" style="text-decoration: underline;">Products</h4></a>
                         </div>
                         <div class="panel-body">
-                            <div class="col-md-6">
-                                <div class="text-center center-block" style="width: 250px">
-                                    <img src="/img/product/4.jpg" class="img-responsive">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="text-center center-block">
+                                        <img src="/img/product/4.jpg" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <a href="/products/name">Product Name</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Qty : 3</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Price : 21312</p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eros tortor,inibus et. Quisque vehicula lobortis commodo. Integer at eleifend lacus, nec consequat urna.
-                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                                </p>
-                                <h5><strong>Product Details</strong></h5>
-                                <ul>
-                                    <li>Fine</li>
-                                    <li>Fine</li>
-                                    <li>Fine</li>
-                                    <li>Fine</li>
-                                </ul>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="text-center center-block">
+                                        <img src="/img/product/4.jpg" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <a href="/products/name">Product Name</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Qty : 3</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Price : 21312</p>
+                                </div>
                             </div>
+                            <hr>
+
+
                             <p class="clearfix"></p>
                             <h4 class="text-primary">Special Notes</h4>
                             <div style="border: 1px solid silver;padding: 10px;">
@@ -79,8 +97,6 @@
                             </div>
                             <p class="clearfix"></p>
                             <div class="col-md-12">
-                                <h5><strong>QTY: </strong>3</h5>
-                                <h5><strong>Unit Price: </strong>50000 FCFA</h5>
                                 <h5><strong>Subtotal: </strong>150000 FCFA</h5>
                                 <hr>
                                 <h5><strong>Delivery Fees: </strong>30000 FCFA</h5>

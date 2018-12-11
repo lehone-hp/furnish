@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
+use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,8 +40,11 @@ class AdminController extends Controller
 
     // function to display admin dashboard
     public function dashboard(){
+        $products = Product::all();
+        $users = User::all();
         $admin = $this->current_admin();
-        return view('admin.index')->withAdmin($admin);
+        return view('admin.index')->withAdmin($admin)
+            ->withUsers($users)->withProducts($products);
     }
 
     // function to logout admin

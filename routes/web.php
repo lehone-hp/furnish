@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
     Route::resource('/clients', 'Admin\ClientController');
     Route::resource('/orders', 'Admin\OrderController');
     Route::resource('/products', 'Admin\ProductController');
+    Route::resource('/categories', 'Admin\CategoryController');
 
 });
 
@@ -75,3 +76,5 @@ Route::get('/cart', 'CartController@getCart')->name('cart');
 //======================================/
 //        GET IMAGES ROUTES
 // ==================================== /
+
+Route::get('/products/images/{image}',  'PagesController@getProductImages');

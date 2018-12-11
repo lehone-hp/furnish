@@ -14,7 +14,7 @@
                         <div class="panel panel-white stats-widget">
                             <div class="panel-body">
                                 <div class="pull-left">
-                                    <span class="stats-number">$781,876</span>
+                                    <span class="stats-number">781,876 <sub>FCFA</sub></span>
                                     <p class="stats-info">Total Income</p>
                                 </div>
                                 <div class="pull-right">
@@ -27,7 +27,7 @@
                         <div class="panel panel-white stats-widget">
                             <div class="panel-body">
                                 <div class="pull-left">
-                                    <span class="stats-number">57</span>
+                                    <span class="stats-number">{{ $users->count() }}</span>
                                     <p class="stats-info">Users</p>
                                 </div>
                                 <div class="pull-right">
@@ -40,7 +40,7 @@
                         <div class="panel panel-white stats-widget">
                             <div class="panel-body">
                                 <div class="pull-left">
-                                    <span class="stats-number">213</span>
+                                    <span class="stats-number">{{ $products->count() }}</span>
                                     <p class="stats-info">Products</p>
                                 </div>
                                 <div class="pull-right">

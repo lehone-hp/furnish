@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('category_id')->nullable();
             $table->string('name');
             $table->string('slug');
             $table->text('description');
@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('photo')->nullable();
             $table->integer('min_order')->default(1);
             $table->boolean('in_stock')->default(true);
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

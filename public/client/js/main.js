@@ -1276,8 +1276,8 @@
         window.location.href = url;
       }
     });
-  
-  
+
+
   })(jQuery);
 (function ($) {
   // USE STRICT

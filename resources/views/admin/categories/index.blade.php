@@ -32,7 +32,7 @@
                                             <th scope="row">{{ $category->id }}</th>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->products->count() }}</td>
-                                            <td><a href="#" class="btn btn-default btn-sm">View <span class="fa fa-eye"></span></a></td>
+                                            <td><a href="/admin/categories/{{ $category->id }}" class="btn btn-default btn-sm">View <span class="fa fa-eye"></span></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

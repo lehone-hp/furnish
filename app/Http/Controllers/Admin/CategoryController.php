@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -63,7 +64,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.single', compact('category'));
     }
 
     /**
@@ -86,7 +88,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validator = \Validator::make($request->all(), [
+            'category' => 'required|string|max:50'
+        ]);
+
+        if ($validator->fails()) {
+            \Session::flash('error', "Invalid category name please try another");
+            return redirect()->back();
+        }
+        else{
+            $category = Category::find($id);
+            $category->name = $request->category;
+
+            $category->update();
+            \Session::flash('success', 'Category was successfully updated');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -97,6 +115,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::Find($id);
+        Product::whereCategoryId($id)->update(['category_id' => null]);
+
+        $category->delete();
+
+        Session::flash('success', 'Category was successfully deleted');
+        return redirect()->route('categories.index');
+
     }
 }

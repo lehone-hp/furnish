@@ -22,7 +22,6 @@
     <link href="{{ asset('client/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="{{ asset('client/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('client/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('client/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('client/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
@@ -38,7 +37,7 @@
 
 </head>
 
-<body class="animsition">
+<body>
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
@@ -59,7 +58,7 @@
         <nav class="navbar-mobile">
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
-                    <li class="active has-sub">
+                    <li class="active">
                         <a class="js-arrow" href="{{ route('client.dashboard') }}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
@@ -103,23 +102,23 @@
         <div class="menu-sidebar__content js-scrollbar1">
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
-                    <li class="active has-sub">
-                        <a class="js-arrow" href="{{ route('client.dashboard') }}">
+                    <li class="{{ Request::is('client/dashboard') ? "active":"" }}">
+                        <a href="{{ route('client.dashboard') }}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li>
+                    <li  class="{{ Request::is('client/profile*') ? "active":"" }}">
                         <a href="{{ route('client.profile') }}">
                             <i class="fas fa-user"></i>User Profile</a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('client/orders*') ? "active":"" }}">
                         <a href="{{ route('client.orders') }}">
                             <i class="fas fa-shopping-cart"></i>Order List</a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('client/wishlist*') ? "active":"" }}">
                         <a href="{{ route('client.wishlist') }}">
                             <i class="fas fa-heart"></i>Wishlist</a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('client/password') ? "active":"" }}">
                         <a href="{{ route('client.password') }}">
                             <i class="fas fa-key"></i>Change Password</a>
                     </li>

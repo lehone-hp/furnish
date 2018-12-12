@@ -154,23 +154,23 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                        <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->fullName() }}" />
                                     </div>
                                     <div class="content">
-                                        <a class="js-acc-btn" href="#">john doe</a>
+                                        <a class="js-acc-btn" href="#">{{ Auth::user()->fullName() }}</a>
                                     </div>
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
-                                                    <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="John Doe" />
+                                                    <img src="{{ asset('client/images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->fullName() }}" />
                                                 </a>
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">
-                                                    <a href="{{ route('client.profile') }}">john doe</a>
+                                                    <a href="{{ route('client.profile') }}">{{ Auth::user()->fullName() }}</a>
                                                 </h5>
-                                                <span class="email">johndoe@example.com</span>
+                                                <span class="email">{{ Auth::user()->email }}</span>
                                             </div>
                                         </div>
                                         <div class="account-dropdown__body">
@@ -197,6 +197,18 @@
         <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
@@ -242,7 +254,12 @@
 
 <!-- Main JS-->
 <script src="{{ asset('client/js/main.js') }}"></script>
-
+<script>
+    // automatically close alerts
+    $(".alert").fadeTo(4000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+    });
+</script>
 </body>
 
 </html>

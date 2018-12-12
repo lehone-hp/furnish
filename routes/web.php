@@ -55,6 +55,7 @@ Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
     })->name('client.logout');
     Route::get('/dashboard', 'Client\ClientController@getIndex')->name('client.dashboard');
     Route::get('/password', 'Client\ClientController@getPassword')->name('client.password');
+    Route::post('/password', 'Client\ClientController@postPassword')->name('client.password');
     Route::get('/profile', 'Client\ClientController@getProfile')->name('client.profile');
     Route::post('/profile', 'Client\ClientController@postProfile')->name('client.profile');
     Route::get('/orders', 'Client\ClientController@getOrders')->name('client.orders');

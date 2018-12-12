@@ -21,29 +21,43 @@
                 <div class="card-header">
                     All fields are required
                 </div>
+
                 <div class="card-body card-block">
-                    <form action="#" method="post" class="">
+                    @if (count($errors))
+                        <div class="alert alert-danger">
+                            {{ $errors->first() }}
+                        </div>
+                    @elseif (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('client.password') }}" method="post">
+                        @csrf
                         <div class="form-group">
-                            <label for="old-password" class="form-control-label">Old Password</label>
-                            <input type="password" id="old-password" name="old-password"
-                                   value="old password" class="form-control">
+                            <label for="current-password" class="form-control-label">Old Password</label>
+                            <input type="password" id="current-password"
+                                   name="current-password"
+                                   class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="new-password" class="form-control-label">New Password</label>
-                            <input type="password" id="new-password" name="new-password"
+                            <label for="password" class="form-control-label">New Password</label>
+                            <input type="password" id="password" name="password"
                                    class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="confirm-password" class="form-control-label">Confirm Password</label>
-                            <input type="password" id="confirm-password" name="confirm-password"
+                            <input type="password" id="confirm-password" name="password_confirmation"
                                    class="form-control">
                         </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-dot-circle-o"></i> Submit
-                    </button>
                 </div>
             </div>
     </div>

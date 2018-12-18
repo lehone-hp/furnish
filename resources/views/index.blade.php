@@ -75,156 +75,30 @@
             </div>
             <div class="row">
                 <!-- product-item start -->
+                @foreach($new_arrivals as $new_arrival)
                 <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
                     <div class="product-item text-center">
                         <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/1.jpg" alt=""/></a>
+                            <a class="image" href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}"><img src="{{ route('product.image', ['image'=>$new_arrival->photo]) }}" alt=""/></a>
                             <a href="#" class="add-to-cart">add to cart</a>
                             <div class="action-btn fix">
                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                 <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
+                                <a href="#" title="Cart"><i class="pe-7s-cart"></i></a>
                             </div>
                         </div>
                         <div class="product-info">
-                            <h5 class="title"><a href="#">Le Parc Minotti Chair</a></h5>
-                            <span class="price"><span class="new">$169.00</span></span>
+                            <h5 class="title"><a href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}">{{ $new_arrival->name }}</a></h5>
+                            <span class="price">
+                                <span class="new">${{ number_format($new_arrival->price, 2) }}</span>
+                                @if($new_arrival->old_price)
+                                    <span class="old">${{ number_format($new_arrival->old_price, 2) }}</span>
+                                @endif
+                            </span>
                         </div>
                     </div>
                 </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/2.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">DSR Eiffel chair</a></h5>
-                            <span class="price"><span class="new">$137.00</span><span class="old">$115.00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/3.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">3d laser cut models</a></h5>
-                            <span class="price"><span class="new">$185.00</span><span class="old">$125..00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/4.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">carl hansen ch25</a></h5>
-                            <span class="price"><span class="new">$245.00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/5.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">DSR Eiffel chair</a></h5>
-                            <span class="price"><span class="new">$137.00</span><span class="old">$115.00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/6.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">Retro chairs</a></h5>
-                            <span class="price"><span class="new">$169.00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/7.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">kichler pendant light</a></h5>
-                            <span class="price"><span class="new">$185.00</span><span class="old">$125..00</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- product-item end -->
-                <!-- product-item start -->
-                <div class="col-md-3 col-sm-4 col-xs-6 col-xs-wide mb-40">
-                    <div class="product-item text-center">
-                        <div class="product-img">
-                            <a class="image" href="#"><img src="img/product/8.jpg" alt=""/></a>
-                            <a href="#" class="add-to-cart">add to cart</a>
-                            <div class="action-btn fix">
-                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="title"><a href="#">pendant lights</a></h5>
-                            <span class="price"><span class="new">$245.00</span></span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <!-- product-item end -->
             </div>
         </div>

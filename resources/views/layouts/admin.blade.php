@@ -184,7 +184,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown user-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img @if($admin->profile_pic != null) src="/users/images/{{ $admin->profile_pic }}" @else src="http://via.placeholder.com/36x36"  @endif  alt="" class="img-circle avatar"></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('admin.profile') }}">Profile</a></li>
                                     <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a></li>
@@ -244,39 +244,47 @@
 <script src="/myadmin/plugins/gridgallery/js/cbpgridgallery.js"></script>
 <script src="/myadmin/js/space.min.js"></script>
 <script src="/myadmin/plugins/toastr/toastr.min.js"></script>
+<script type="text/javascript">
+
+    var token =  '{!! csrf_token() !!}';
+
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "hideDuration": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    @if(count($errors) > 0)
+    @foreach($errors->all() as $error)
+    toastr.error('{{$error}}');
+    @endforeach
+    @endif
+
+    @if(session()->has('success'))
+    toastr.success('{{session()->get("success")}}');
+    @endif
+
+    @if(session()->has('error'))
+    toastr.error('{{session()->get("error") }}');
+    @endif
+
+</script>
+
+
 <script src="/myadmin/js/pages/dashboard.js"></script>
 <script src="/myadmin/js/admin.js"></script>
+
+
 </body>
 
-    <script type="text/javascript">
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "hideDuration": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-
-            @if(count($errors))
-                @foreach($errors->all() as $error)
-                    toastr.error('{{$error}}');
-                @endforeach
-            @endif
-
-            @if(session()->has('success'))
-            toastr.success('{{session()->get("success")}}');
-            @endif
-
-            @if(session()->has('error'))
-            toastr.error('{{session()->get("error") }}');
-            @endif
-
-    </script>
 
 </html>

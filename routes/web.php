@@ -33,8 +33,10 @@ Route::post('/admin/login', 'Admin\AdminController@authenticateAdmin')->name('ad
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
     Route::get('dashboard', 'Admin\AdminController@dashboard')->name('admin.dashboard');
     Route::get('/profile', 'Admin\AdminController@getProfile')->name('admin.profile');
+    Route::post('/profile', 'Admin\AdminController@updateProfile')->name('admin.profile.update');
     Route::get('/password', 'Admin\AdminController@getPassword')->name('admin.password');
     Route::post('/logout', 'Admin\AdminController@logoutAdmin')->name('admin.logout');
+    Route::post('/picture/update', 'Admin\AdminController@updatePicture');
     Route::resource('/clients', 'Admin\ClientController');
     Route::resource('/orders', 'Admin\OrderController');
     Route::resource('/products', 'Admin\ProductController');
@@ -80,3 +82,4 @@ Route::get('/cart', 'CartController@getCart')->name('cart');
 // ==================================== /
 
 Route::get('/products/images/{image}',  'PagesController@getProductImages');
+Route::get('/users/images/{image}',  'PagesController@getUsersImages');

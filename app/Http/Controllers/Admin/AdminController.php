@@ -54,6 +54,70 @@ class AdminController extends Controller
     }
 
 
+    //get profile of admin
+
+    public function getProfile(){
+        $admin = $this->current_admin();
+        return view('admin.profile')->withAdmin($admin);
+    }
+
+    public function updateProfile(Request $request){
+
+        $this->validate(request(), [
+            'name' => 'bail|required',
+            'email' => 'bail|required|string',
+            'password' => 'confirmed|min:6',
+        ]);
+
+
+        $admin = $this->current_admin();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+
+        if($request->password){
+            $admin->password = \Hash::make($request->password);
+        }
+        $admin->update();
+        session()->flash("success", "Account updated successfully!");
+        return back();
+
+    }
+
+    public function updateProfilePic(Request $request){
+        $admin = $this->current_admin();
+        if($admin){
+            $pic = '';
+            //getting banner one and storing
+            if($request->hasFile('image')) {
+                $path = storage_path('app/public/users');
+                \File::isDirectory($path) or \File::makeDirectory($path, 0777, true, true);
+                $image = $request->file('image');
+                $filename = uniqid() . '_' . time() . '.' . $image->getClientOriginalExtension();
+
+                $oldfile2 = $admin->profile_pic;
+                if(file_exists($path.'/'.$oldfile2)){
+                    \File::delete($path.'/'.$oldfile2);
+                }
+                $image->move($path,$filename);
+                $admin->profile_pic = $filename;
+                $pic = $filename;
+            }
+            $admin->update();
+
+            return response()->json([
+                "msg" => "Successfully updated profile picture",
+                "image" => $pic
+            ], 200);
+
+        }
+        else{
+            return response()->json([
+                "msg" => "Oops no such client",
+            ]);
+        }
+
+    }
+
 
     //return the current logged admin
     public function current_admin()

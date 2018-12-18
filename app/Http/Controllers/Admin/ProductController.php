@@ -61,6 +61,12 @@ class ProductController extends Controller
             $product->in_stock = true;
         }
 
+        if(!$request->has('is_featured')){
+            $product->in_stock = false;
+        }else{
+            $product->in_stock = true;
+        }
+
         if($request->hasFile('image')){
             $path = storage_path('app/public/products');
             \File::isDirectory($path) or \File::makeDirectory($path, 0777, true, true);
@@ -121,6 +127,12 @@ class ProductController extends Controller
         $product->description = $request->description;
 
         if(!$request->has('in_stock')){
+            $product->in_stock = false;
+        }else{
+            $product->in_stock = true;
+        }
+
+        if(!$request->has('is_featured')){
             $product->in_stock = false;
         }else{
             $product->in_stock = true;

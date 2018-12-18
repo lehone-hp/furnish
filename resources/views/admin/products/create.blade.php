@@ -41,19 +41,23 @@
                                     <input type="file" class="form-control"  name="image" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="price"  class=" col-md-5 control-label">Price</label>
-                                    <label for="old_price" class=" col-md-5 control-label">Old Price</label>
+                                    <label for="price"  class=" col-md-4 control-label">Price</label>
+                                    <label for="old_price" class=" col-md-4 control-label">Old Price</label>
                                     <label for="in_stock" class=" col-md-2 control-label">In Stock <small>(Availability)</small></label>
+                                    <label for="in_stock" class=" col-md-2 control-label">Featured <small>(Appear as featured)</small></label>
                                     <div class="col-sm-12">
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <input type="text" class="form-control" id="price" name="price" placeholder="Price" required>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <input type="text" class="form-control" id="old_price" name="old_price" placeholder="Old Price">
                                             </div>
                                             <div class="col-md-2">
                                                 <input type="checkbox" class="form-control" id="in_stock" name="in_stock" checked>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="checkbox" class="form-control" id="is_featured" name="is_featured">
                                             </div>
                                         </div>
                                     </div>

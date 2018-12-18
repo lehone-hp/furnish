@@ -24,7 +24,7 @@
                             <p class="text-center">{{ $product->email }}</p>
                             <hr>
                             <ul class="list-unstyled text-left">
-                                <li><p><i class="fa fa-tags m-r-xs"></i>{{ $product->category->name }}</p></li>
+                                <li><p><i class="fa fa-tags m-r-xs"></i>{{ $product->category->name }} @if($product->featured == 1) &nbsp;&nbsp; <span class="fa fa-star" style="color: goldenrod"></span><span class="fa fa-star" style="color: goldenrod"></span><span class="fa fa-star" style="color: goldenrod"></span><span class="fa fa-star" style="color: goldenrod"></span><span class="fa fa-star" style="color: goldenrod"></span>  @endif</p></li>
                                 <li><p class="text-primary"><i class="fa fa-money m-r-xs"></i>{{ $product->price }} FCFA @if( $product->old_price != null)<small><strike>{{ $product->old_price }} FCFA</strike></small> @endif</li>
                             </ul>
                             <hr>

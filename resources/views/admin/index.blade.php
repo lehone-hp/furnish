@@ -14,7 +14,7 @@
                         <div class="panel panel-white stats-widget">
                             <div class="panel-body">
                                 <div class="pull-left">
-                                    <span class="stats-number">781,876 <sub>FCFA</sub></span>
+                                    <span class="stats-number">781,876 <small>FCFA</small></span>
                                     <p class="stats-info">Total Income</p>
                                 </div>
                                 <div class="pull-right">
@@ -64,7 +64,7 @@
                     </div>
                 </div><!-- Row -->
                 <div class="row">
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="panel panel-white">
                             <div class="panel-heading clearfix">
                                 <h4 class="panel-title">Total Revenue</h4>
@@ -74,29 +74,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="panel panel-white">
-                            <div class="panel-heading clearfix">
-                                <h4 class="panel-title">Server Status</h4>
-                            </div>
                             <div class="panel-body">
-                                <div class="container-fluid">
-                                    <div class="server-load row">
-                                        <div class="server-stat col-sm-4">
-                                            <p>167GB</p>
-                                            <span>Usage</span>
-                                        </div>
-                                        <div class="server-stat col-sm-4">
-                                            <p>320GB</p>
-                                            <span>Space</span>
-                                        </div>
-                                        <div class="server-stat col-sm-4">
-                                            <p>57.4%</p>
-                                            <span>CPU</span>
-                                        </div>
-                                    </div>
+                                <div class="panel-heading clearfix">
+                                    <h4 class="panel-title">Products Sales</h4>
                                 </div>
-                                <div id="chart2"><svg></svg></div>
+                                <canvas id="chart2" width="684" height="450" style="display: block; width: 228px; height: 114px;"></canvas>
                             </div>
                         </div>
                     </div>

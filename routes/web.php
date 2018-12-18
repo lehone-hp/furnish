@@ -18,8 +18,8 @@
 
 Route::get('/', 'PagesController@getIndex')->name('index');;
 Route::get('/contact', 'PagesController@getContact')->name('contact');
-Route::get('/shop', 'PagesController@getShop')->name('shop');
-Route::get('/product/{id}', 'PagesController@getProductDetails')->name('product.details');
+Route::get('/shop/{category?}', 'PagesController@getShop')->name('shop');
+Route::get('/product/{slug}', 'PagesController@getProductDetails')->name('product.details');
 Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
 
 //======================================/
@@ -79,4 +79,4 @@ Route::get('/cart', 'CartController@getCart')->name('cart');
 //        GET IMAGES ROUTES
 // ==================================== /
 
-Route::get('/products/images/{image}',  'PagesController@getProductImages');
+Route::get('/products/images/{image}',  'PagesController@getProductImages')->name('product.image');

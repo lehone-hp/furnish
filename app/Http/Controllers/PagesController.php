@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
 
 class PagesController extends Controller
 {
     public function getIndex(){
 
-        return view('index');
+        $new_arrivals = Product::all()->take(8);
+        return view('index', compact('new_arrivals'));
     }
 
     public function getAbout(){
@@ -19,12 +21,32 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function getShop(){
-        return view('shop');
+    public function getShop($cat = null){
+        $products = [];
+        if ($cat) {
+            // TODO change this to use $category->slug
+            $category = Category::where('name', $cat)->first();
+            if ($category) {
+                $products = Product::where('category_id', $category->id)
+                    ->orderBy("created_at","DESC")
+                    ->get();
+            }
+        } else {
+            $products = Product::orderBy("created_at","DESC")->get();
+        }
+
+        return view('shop', compact('products'));
     }
 
-    public function getProductDetails($id){
-        return view('product-details');
+    public function getProductDetails($slug){
+        $product = Product::where('slug', $slug)->first();
+        $related_products = [];
+
+        if ($product) {
+            $related_products = Product::where('category_id', $product->category_id)->get();
+        }
+
+        return view('product-details', compact('product', 'related_products'));
     }
 
     public function getCheckout(){

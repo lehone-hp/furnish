@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,8 +16,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $admin = $this->current_admin();
         $clients = User::paginate(20);
-        return view('admin.clients.index', compact('clients'));
+        return view('admin.clients.index', compact('clients', 'admin'));
     }
 
     /**
@@ -48,8 +50,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
+        $admin = $this->current_admin();
         $client = User::find($id);
-        return view('admin.clients.single',compact('client'));
+        return view('admin.clients.single',compact('client', 'admin'));
     }
 
     /**
@@ -85,4 +88,16 @@ class ClientController extends Controller
     {
         //
     }
+
+    //return the current logged admin
+    public function current_admin()
+    {
+        $admin = Admin::find(\Cookie::get('_furnish_admin'));
+        if($admin != null){
+            return $admin;
+        }else{
+            return redirect('/');
+        }
+    }
+
 }

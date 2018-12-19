@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $admin = $this->current_admin();
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories', 'admin'));
     }
 
     /**
@@ -49,6 +51,8 @@ class CategoryController extends Controller
         else{
             $category = new Category();
             $category->name = $request->category;
+            $category->slug = str_slug($request->category);
+
 
             $category->save();
             \Session::flash('success', 'Category was successfully created');
@@ -64,8 +68,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+        $admin = $this->current_admin();
         $category = Category::find($id);
-        return view('admin.categories.single', compact('category'));
+        return view('admin.categories.single', compact('category', 'admin'));
     }
 
     /**
@@ -100,6 +105,7 @@ class CategoryController extends Controller
         else{
             $category = Category::find($id);
             $category->name = $request->category;
+            $category->slug = str_slug($request->category);
 
             $category->update();
             \Session::flash('success', 'Category was successfully updated');
@@ -120,8 +126,20 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        Session::flash('success', 'Category was successfully deleted');
+        \Session::flash('success', 'Category was successfully deleted');
         return redirect()->route('categories.index');
 
     }
+
+    //return the current logged admin
+    public function current_admin()
+    {
+        $admin = Admin::find(\Cookie::get('_furnish_admin'));
+        if($admin != null){
+            return $admin;
+        }else{
+            return redirect('/');
+        }
+    }
+
 }

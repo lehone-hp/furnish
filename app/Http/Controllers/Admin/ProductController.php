@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $admin = $this->current_admin();
         $products = Product::paginate(20);
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', 'admin'));
     }
 
     /**
@@ -27,8 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $admin = $this->current_admin();
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories', 'admin'));
     }
 
     /**
@@ -62,9 +65,9 @@ class ProductController extends Controller
         }
 
         if(!$request->has('is_featured')){
-            $product->in_stock = false;
+            $product->featured = false;
         }else{
-            $product->in_stock = true;
+            $product->featured = true;
         }
 
         if($request->hasFile('image')){
@@ -90,10 +93,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $admin = $this->current_admin();
         $product = Product::where('slug', $id)->first();
         $categories = Category::all();
 
-        return view('admin.products.single',compact('product', 'categories'));
+        return view('admin.products.single',compact('product', 'categories','admin'));
 
     }
 
@@ -133,9 +137,9 @@ class ProductController extends Controller
         }
 
         if(!$request->has('is_featured')){
-            $product->in_stock = false;
+            $product->featured = false;
         }else{
-            $product->in_stock = true;
+            $product->featured = true;
         }
 
         if($request->hasFile('image')){
@@ -173,4 +177,16 @@ class ProductController extends Controller
         \Session::flash('success', 'Product was successfully deleted');
         return redirect()->route('products.index');
     }
+
+    //return the current logged admin
+    public function current_admin()
+    {
+        $admin = Admin::find(\Cookie::get('_furnish_admin'));
+        if($admin != null){
+            return $admin;
+        }else{
+            return redirect('/');
+        }
+    }
+
 }

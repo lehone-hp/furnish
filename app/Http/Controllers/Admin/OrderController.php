@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.orders.index');
+        $admin = $this->current_admin();
+        return view('admin.orders.index', compact('admin'));
     }
 
     /**
@@ -46,7 +48,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        return view('admin.orders.single');
+        $admin = $this->current_admin();
+        return view('admin.orders.single', compact('admin'));
     }
 
     /**
@@ -82,4 +85,16 @@ class OrderController extends Controller
     {
         //
     }
+
+    //return the current logged admin
+    public function current_admin()
+    {
+        $admin = Admin::find(\Cookie::get('_furnish_admin'));
+        if($admin != null){
+            return $admin;
+        }else{
+            return redirect('/');
+        }
+    }
+
 }

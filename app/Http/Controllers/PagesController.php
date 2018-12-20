@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function getIndex(){
 
-        $new_arrivals = Product::all()->take(8);
+        $new_arrivals = Product::take(8)->orderBy('created_at', 'DESC')->get();
         return view('index', compact('new_arrivals'));
     }
 
@@ -24,8 +24,7 @@ class PagesController extends Controller
     public function getShop($cat = null){
         $products = [];
         if ($cat) {
-            // TODO change this to use $category->slug
-            $category = Category::where('name', $cat)->first();
+            $category = Category::where('slug', $cat)->first();
             if ($category) {
                 $products = Product::where('category_id', $category->id)
                     ->orderBy("created_at","DESC")
@@ -35,7 +34,8 @@ class PagesController extends Controller
             $products = Product::orderBy("created_at","DESC")->get();
         }
 
-        return view('shop', compact('products'));
+        $categories = Category::orderBy("name","ASC")->get();
+        return view('shop', compact('products', 'categories'));
     }
 
     public function getProductDetails($slug){

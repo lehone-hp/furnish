@@ -83,7 +83,7 @@ class AdminController extends Controller
 
     }
 
-    public function updateProfilePic(Request $request){
+    public function updatePicture(Request $request){
         $admin = $this->current_admin();
         if($admin){
             $pic = '';

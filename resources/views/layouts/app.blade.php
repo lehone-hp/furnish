@@ -131,41 +131,17 @@
                         <ul>
                             <li class="active"><a href="{{ route('index') }}">Home</a></li>
                             <li><a href="{{ route('shop') }}">shop</a>
-                                <ul class="mega-menu">
-                                    <li><a href="{{ route('shop') }}">Chair</a>
-                                        <ul>
-                                            <li><a href="#">Tops</a></li>
-                                            <li><a href="#">Bras &amp; Tanks</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{ route('shop') }}">Table</a>
-                                        <ul>
-                                            <li><a href="#">Tops</a></li>
-                                            <li><a href="#">Bras &amp; Tanks</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{ route('shop') }}">Cabinet</a>
-                                        <ul>
-                                            <li><a href="#">Tops</a></li>
-                                            <li><a href="#">Bras &amp; Tanks</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                        </ul>
-                                    </li>
+                                <ul class="sub-menu">
+                                    @foreach(\App\Category::orderBy('name', 'ASC')->get() as $category)
+                                    <li><a href="{{ route('shop', ['cat'=>$category->slug]) }}">
+                                            {{ $category->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li><a href="{{ route('shop') }}">sofa</a></li>
-                            <li><a href="{{ route('shop') }}">Cabinet</a></li>
+                            @foreach(\App\Category::take(2)->inRandomOrder()->get() as $category)
+                                <li><a href="{{ route('shop', ['cat'=>$category->slug]) }}">
+                                        {{ $category->name }}</a></li>
+                            @endforeach
                             <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav>
@@ -250,11 +226,10 @@
                     <p><strong>Email :</strong> <a href="#">yourmail@outlook.com</a></p>
                     <!-- Footer Social -->
                     <div class="footer-social fix">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-rss"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
                 <!-- Footer Widget -->

@@ -83,7 +83,7 @@
                             <a href="#" class="add-to-cart">add to cart</a>
                             <div class="action-btn fix">
                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
+                                <a href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
                                 <a href="#" title="Cart"><i class="pe-7s-cart"></i></a>
                             </div>
                         </div>

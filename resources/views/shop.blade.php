@@ -25,7 +25,7 @@
     <div class="page-section section pt-100 pb-60">
         <div class="container">
             <div class="row">
-                @if($products)
+                @if(count($products) > 0)
                     <div class="col-lg-9 col-md-8 col-xs-12 float-right">
                         <div class="shop-bar mb-30">
                             <ul class="shop-tablist">
@@ -54,7 +54,7 @@
                                             <a href="#" class="add-to-cart">add to cart</a>
                                             <div class="action-btn fix">
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
+                                                <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
                                                 <a href="#" title="Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>
@@ -85,104 +85,32 @@
                             </div>
                             <div class="tab-pane row" id="product-list">
                                 <!-- list product-item start -->
+                                @foreach($products as $product)
                                 <div class="col-xs-12 mb-40">
                                     <div class="list-product-item">
                                         <div class="list-product-img">
-                                            <a class="image" href="product-details.html"><img src="img/product/1.jpg" alt=""/></a>
+                                            <a class="image" href="{{ route('product.details', ['slug'=>$product->slug]) }}">
+                                                <img src="{{ route('product.image', ['image'=>$product->photo]) }}" alt=""/></a>
                                         </div>
                                         <div class="list-product-info fix">
-                                            <h2 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h2>
-                                            <span class="price"><span class="new">$169.00</span></span>
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
+                                            <h2 class="title"><a href="{{ route('product.details', ['slug'=>$product->slug]) }}">
+                                                    {{ $product->name }}</a></h2>
+                                            <span class="price">
+                                                <span class="new">${{ number_format($product->price, 2) }}</span>
+                                                @if( $product->old_price )
+                                                    <span class="old">${{ number_format($product->old_price) }}</span>
+                                                @endif
+                                            </span>
+                                            <p>{{ substr(strip_tags($product->description), 0, 155).'....' }}</p>
                                             <div class="list-action-btn fix">
-                                                <a href="#" class="add-to-cart">add to cart</a>
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
+                                                <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
+                                                <a href="#" title="Add To Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- list product-item end -->
-                                <!-- list product-item start -->
-                                <div class="col-xs-12 mb-40">
-                                    <div class="list-product-item">
-                                        <div class="list-product-img">
-                                            <a class="image" href="product-details.html"><img src="img/product/2.jpg" alt=""/></a>
-                                        </div>
-                                        <div class="list-product-info fix">
-                                            <h2 class="title"><a href="product-details.html">DSR Eiffel chair</a></h2>
-                                            <span class="price"><span class="new">$137.00</span><span class="old">$115.00</span></span>
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                                            <div class="list-action-btn fix">
-                                                <a href="#" class="add-to-cart">add to cart</a>
-                                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- list product-item end -->
-                                <!-- list product-item start -->
-                                <div class="col-xs-12 mb-40">
-                                    <div class="list-product-item">
-                                        <div class="list-product-img">
-                                            <a class="image" href="product-details.html"><img src="img/product/3.jpg" alt=""/></a>
-                                        </div>
-                                        <div class="list-product-info fix">
-                                            <h2 class="title"><a href="product-details.html">3d laser cut models</a></h2>
-                                            <span class="price"><span class="new">$185.00</span><span class="old">$125..00</span></span>
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                                            <div class="list-action-btn fix">
-                                                <a href="#" class="add-to-cart">add to cart</a>
-                                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- list product-item end -->
-                                <!-- list product-item start -->
-                                <div class="col-xs-12 mb-40">
-                                    <div class="list-product-item">
-                                        <div class="list-product-img">
-                                            <a class="image" href="product-details.html"><img src="img/product/4.jpg" alt=""/></a>
-                                        </div>
-                                        <div class="list-product-info fix">
-                                            <h2 class="title"><a href="product-details.html">carl hansen ch25</a></h2>
-                                            <span class="price"><span class="new">$245.00</span></span>
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                                            <div class="list-action-btn fix">
-                                                <a href="#" class="add-to-cart">add to cart</a>
-                                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- list product-item end -->
-                                <!-- list product-item start -->
-                                <div class="col-xs-12 mb-40">
-                                    <div class="list-product-item">
-                                        <div class="list-product-img">
-                                            <a class="image" href="product-details.html"><img src="img/product/6.jpg" alt=""/></a>
-                                        </div>
-                                        <div class="list-product-info fix">
-                                            <h2 class="title"><a href="product-details.html">Retro chairs</a></h2>
-                                            <span class="price"><span class="new">$169.00</span></span>
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                                            <div class="list-action-btn fix">
-                                                <a href="#" class="add-to-cart">add to cart</a>
-                                                <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                <a href="#" data-toggle="modal"  data-target="#productModal" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Compare"><i class="pe-7s-repeat"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <!-- list product-item end -->
                                 <div class="page-pagination text-center col-xs-12 fix mb-40">
                                     <ul>
@@ -218,17 +146,15 @@
                     <div class="single-sidebar mb-40">
                         <h3 class="sidebar-title">Category</h3>
                         <ul class="category-sidebar">
-                            <li><a href="#">Chairs</a></li>
-                            <li><a href="#">Tables</a></li>
-                            <li><a href="#">Sofas</a></li>
-                            <li><a href="#">Lights & Lamps</a></li>
-                            <li><a href="#">Decorations</a></li>
-                            <li><a href="#">Others</a></li>
+                            @foreach($categories as $category)
+                            <li><a href="{{ route('shop', ['cat'=>$category->slug]) }}">
+                                    {{ $category->name }} ({{ count($category->products) }})</a></li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="single-sidebar mb-40">
-                        <h3 class="sidebar-title">Category</h3>
+                        <h3 class="sidebar-title">Price</h3>
                         <div id="price-range"></div>
                     </div>
 

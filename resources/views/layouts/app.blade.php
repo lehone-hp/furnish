@@ -81,11 +81,11 @@
                             <!-- Cart Toggle -->
                             <a class="cart-toggle" href="#" data-toggle="dropdown">
                                 <i class="pe-7s-cart"></i>
-                                <span>2</span>
+                                <span class="cartCount">2</span>
                             </a>
                             <!-- Mini Cart Brief -->
                             <div class="mini-cart-brief dropdown-menu text-left">
-                                <div class="cart-items"><p>You have <span>2 items</span> in your shopping bag</p></div>
+                                <div class="cart-items"><p>You have <span class="cartCount">2</span> item(s) in your shopping bag</p></div>
                                 <!-- Cart Products -->
                                 <div class="all-cart-product clearfix">
                                     <div class="single-cart clearfix">
@@ -299,6 +299,7 @@
 <!-- Body main wrapper end -->
 <!-- Placed JS at the end of the document so the pages load faster -->
 <!-- jQuery latest version -->
+
 <script src="/js/vendor/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap js -->
 <script src="/js/bootstrap.min.js"></script>
@@ -306,6 +307,15 @@
 <script src="/js/plugins.js"></script>
 <!-- Ajax Mail js -->
 <script src="/js/ajax-mail.js"></script>
+
+<script type="text/javascript">
+    // token for all js requests
+        var mytoken = '{{ @csrf_token() }}';
+        var add_to_cart_route = '{{ route('cart.add') }}';
+        var clear_cart_route = '{{ route('cart.clear') }}';
+
+</script>
+
 <!-- Main js -->
 <script src="/js/main.js"></script>
 

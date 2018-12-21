@@ -160,19 +160,88 @@ $('.ui-slider-handle:eq(1)').html( '<span>' + '$' + $( "#price-range" ).slider( 
 $('.product-quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
 $('.qtybtn').on('click', function() {
     var $button = $(this);
-    var oldValue = $button.parent().find('input').val();
+    var oldValue = parseInt($button.parent().find('input').val());
+    var inputField = $button.parent().find('input');
+    // get the max and min values to place an order
+    var max = parseInt(inputField.attr("max"));
+    var min = parseInt(inputField.attr("min"));
     if ($button.hasClass('inc')) {
-        var newVal = parseFloat(oldValue) + 1;
+        if(oldValue < max){
+            var newVal = oldValue + 1;
+        }else {
+            alert("Max order limit reached");
+            return;
+        }
     } else {
         // Don't allow decrementing below zero
-        if (oldValue > 0) {
-            var newVal = parseFloat(oldValue) - 1;
+        if (oldValue > min) {
+            var newVal = oldValue - 1;
         } else {
-            newVal = 0;
+            alert("Sorry you can't order below that qty");
+            return;
         }
     }
     $button.parent().find('input').val(newVal);
 });
+
+      /* =================================== */
+     /* ADD TO CART FUNCTIONALITY GOES HERE */
+    /* =================================== */
+
+    $("#addToCart").click(function () {
+       var qty = parseInt($("#product_qty").val());
+       var slug = $("#pdtSlug").val();
+
+       var data = {
+           qty : qty,
+           slug : slug,
+           _token : mytoken
+       };
+       if(slug && qty){
+           $.ajax({
+               url: add_to_cart_route,
+               data: data,
+               type: 'POST',
+               success: function (data) {
+                   console.log(data.msg);
+                   alert(data.msg);
+                   $(".cartCount").html(data.cart_count);
+               },
+               error: function (xhr, status, error) {
+                   console.log(xhr.responseText);
+                   alert(error.msg);
+               }
+           });
+       }else {
+           alert("Unexpected error. Try Refreshing this page!");
+       }
+    });
+
+    $("#clearCart").click(function (e) {
+        e.preventDefault();
+        var data = {
+            _token : mytoken
+        };
+
+        $.ajax({
+            url: clear_cart_route,
+            data: data,
+            type: 'POST',
+            success: function (data) {
+                console.log(data.msg);
+                alert(data.msg);
+                setTimeout(function () {
+                    // we reload the page to show the updated cart or use js still ;)
+                    location.reload();
+                }, 1500);
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+                alert(error.msg);
+            }
+        });
+
+    });
 
 /*-- Checkout Form Collapse on Checkbox --*/ 
 $('.checkout-form input[type="checkbox"]').on('click', function(){
@@ -182,7 +251,7 @@ $('.checkout-form input[type="checkbox"]').on('click', function(){
     }else {
         $('.collapse[data-collapse="'+$collapse+'"]').slideUp();
     }
-})
+});
 
 /*-- Youtube Background Video --*/
 $(".youtube-bg").YTPlayer();

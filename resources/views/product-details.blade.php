@@ -30,7 +30,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content mb-10">
                         <div class="pro-large-img tab-pane active" id="pro-large-img-1">
-                            <img src="{{ route('product.image', ['image'=>$product->photo]) }} " alt="{{ $product->name }}" />
+                            <img src="{{ route('product.image', ['image'=>$product->photo]) }}" alt="{{ $product->name }}" />
                         </div>
                     </div>
                 </div>
@@ -66,9 +66,10 @@
                         </ul>
                         <div class="quantity-cart section">
                             <div class="product-quantity">
-                                <input type="text" value="0">
+                                <input id="product_qty" class="product_qty" type="number" min="{{ $product->min_order }}" value="{{ $product->min_order }}" max="10" readonly>
                             </div>
-                            <button class="add-to-cart">add to cart</button>
+                            <input type="hidden" value="{{ $product->slug }}" id="pdtSlug">
+                            <button class="add-to-cart" id="addToCart">add to cart</button>
                         </div>
                         <div class="share-icons section">
                             <a class="twitter" href="#"><i class="fab fa-facebook"></i>  facebook</a>
@@ -172,14 +173,7 @@
             </div>
             </div>
         </div>
-    </div>
     @endif
 
 
-@endsection
-
-@section("footer-script")
-<script>
-    // footer script
-</script>
 @endsection

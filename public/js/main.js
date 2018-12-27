@@ -184,37 +184,16 @@ $('.qtybtn').on('click', function() {
     $button.parent().find('input').val(newVal);
 });
 
-      /* =================================== */
-     /* ADD TO CART FUNCTIONALITY GOES HERE */
+    /* =================================== */
+    /* ADD TO CART FUNCTIONALITY GOES HERE */
     /* =================================== */
 
     $("#addToCart").click(function () {
        var qty = parseInt($("#product_qty").val());
        var slug = $("#pdtSlug").val();
 
-       var data = {
-           qty : qty,
-           slug : slug,
-           _token : mytoken
-       };
-       if(slug && qty){
-           $.ajax({
-               url: add_to_cart_route,
-               data: data,
-               type: 'POST',
-               success: function (data) {
-                   console.log(data.msg);
-                   alert(data.msg);
-                   $(".cartCount").html(data.cart_count);
-               },
-               error: function (xhr, status, error) {
-                   console.log(xhr.responseText);
-                   alert(error.msg);
-               }
-           });
-       }else {
-           alert("Unexpected error. Try Refreshing this page!");
-       }
+       // Method definition in app.blade.php
+       addToCart(qty, slug);
     });
 
     $("#clearCart").click(function (e) {

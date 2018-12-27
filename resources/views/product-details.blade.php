@@ -138,11 +138,13 @@
                         <div class="product-item text-center">
                             <div class="product-img">
                                 <a class="image" href="{{ route('product.details', ['slug'=>$related->slug]) }}"><img src="{{ route('product.image', ['image'=>$related->photo]) }}" alt="{{ $related->name }}"/></a>
-                                <a href="#" class="add-to-cart">add to cart</a>
+                                <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}')"
+                                   class="add-to-cart">add to cart</a>
                                 <div class="action-btn fix">
                                     <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                     <a href="{{ route('product.details', ['slug'=>$related->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <a href="#" title="Cart"><i class="pe-7s-cart"></i></a>
+                                    <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}')"
+                                       title="Cart"><i class="pe-7s-cart"></i></a>
                                 </div>
                             </div>
                             <div class="product-info">

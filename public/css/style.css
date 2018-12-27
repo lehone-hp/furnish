@@ -1125,6 +1125,8 @@ a.meanmenu-reveal i {
   opacity: 1;
   visibility: visible;
   z-index: 999;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 /*-- Mini Cart Items --*/
@@ -1491,6 +1493,7 @@ a.meanmenu-reveal i {
 }
 .product-item:hover .add-to-cart {
   opacity: 1;
+  cursor: pointer;
 }
 /*-- Product Action Button --*/
 .product-img .action-btn {
@@ -1523,6 +1526,7 @@ a.meanmenu-reveal i {
 }
 .product-img .action-btn a:hover {
   background-color: #ffae00;
+  cursor: pointer;
 }
 /*-- Product Info --*/
 .product-info {}

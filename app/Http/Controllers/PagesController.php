@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Compound;
 
 class PagesController extends Controller
 {
@@ -50,7 +52,8 @@ class PagesController extends Controller
     }
 
     public function getCheckout(){
-        return view('checkout');
+        $user = Auth::user();
+        return view('checkout', compact('user'));
     }
 
     public function getRegister(){

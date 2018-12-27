@@ -81,46 +81,54 @@
                             <!-- Cart Toggle -->
                             <a class="cart-toggle" href="#" data-toggle="dropdown">
                                 <i class="pe-7s-cart"></i>
-                                <span class="cartCount">2</span>
+                                <span class="cartCount">{{ Cart::getContent()->count() }}</span>
                             </a>
                             <!-- Mini Cart Brief -->
                             <div class="mini-cart-brief dropdown-menu text-left">
-                                <div class="cart-items"><p>You have <span class="cartCount">2</span> item(s) in your shopping bag</p></div>
-                                <!-- Cart Products -->
-                                <div class="all-cart-product clearfix">
-                                    <div class="single-cart clearfix">
-                                        <div class="cart-image">
-                                            <a href="{{ route('product.details', 1) }}"><img src="{{ asset('img/product/cart-1.jpg') }}" alt=""></a>
+                                <div class="cart-items"><p>You have <span class="cartCount">{{ Cart::getContent()->count() }}</span> item(s) in your shopping bag</p></div>
+
+                                <div id="cart_product_list">
+                                    <!-- Cart Products -->
+                                    @if( Cart::getContent()->count() > 0)
+                                        <div class="all-cart-product clearfix">
+                                            @foreach( Cart::getContent() as $item)
+                                                <div class="single-cart clearfix">
+                                                    <div class="cart-image">
+                                                        <a href="{{ route('product.details', 1) }}"><img src="{{ route('product.image', ['image'=>$item->attributes->img]) }}" alt=""></a>
+                                                    </div>
+                                                    <div class="cart-info">
+                                                        <h5><a href="{{ route('product.details', ['slug'=>$item->attributes->slug]) }}">
+                                                                {{ $item->name }}</a></h5>
+                                                        <p>Price : ${{ number_format($item->price, 2) }}</p>
+                                                        <p>Qty : {{ $item->quantity }}</p>
+                                                        <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        <div class="cart-info">
-                                            <h5><a href="{{ route('product.details', 1) }}">Le Parc Minotti Chair</a></h5>
-                                            <p>Price : £9.00</p>
-                                            <p>Qty : 1</p>
-                                            <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
+                                        <!-- Cart Total -->
+                                        <div class="cart-totals">
+                                            <h5>Total <span>${{ number_format(Cart::getTotal(), 2) }}</span></h5>
                                         </div>
-                                    </div>
-                                    <div class="single-cart clearfix">
-                                        <div class="cart-image">
-                                            <a href="{{ route('product.details', 1) }}"><img src="{{ asset('img/product/cart-2.jpg') }}" alt=""></a>
+
+                                        <!-- Cart Button -->
+                                        <div class="cart-bottom">
+                                            <a href="{{ route('cart') }}" class="btn-sm">Cart</a>
+                                            <p class="clearfix"></p>
+                                            <a href="{{ route('checkout') }}" class="btn-sm">Check out</a>
                                         </div>
-                                        <div class="cart-info">
-                                            <h5><a href="{{ route('product.details', 1) }}">DSR Eiffel chair</a></h5>
-                                            <p>Price : £9.00</p>
-                                            <p>Qty : 1</p>
-                                            <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
+                                    @else
+                                        <div class="all-cart-product clearfix">
+                                            <img src="{{ asset('img/empty_cart.png') }}" class="img-responsive center-block" style="margin-bottom: 15px">
                                         </div>
-                                    </div>
+
+                                        <!-- Cart Button -->
+                                        <div class="cart-bottom">
+                                            <a href="{{ route('shop') }}" class="btn-sm">Continue Shopping</a>
+                                        </div>
+                                    @endif
                                 </div>
-                                <!-- Cart Total -->
-                                <div class="cart-totals">
-                                    <h5>Total <span>£12.00</span></h5>
-                                </div>
-                                <!-- Cart Button -->
-                                <div class="cart-bottom">
-                                    <a href="{{ route('cart') }}" class="btn-sm">Cart</a>
-                                    <p class="clearfix"></p>
-                                    <a href="{{ route('checkout') }}" class="btn-sm">Check out</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -314,6 +322,102 @@
         var add_to_cart_route = '{{ route('cart.add') }}';
         var clear_cart_route = '{{ route('cart.clear') }}';
 
+    /**
+     * Add Product to cart
+     * @param quantity of product
+     * @param slug, product's slug
+     */
+    function addToCart(quantity, slug) {
+        var data = {
+            qty : quantity,
+            slug : slug,
+            _token : mytoken
+        };
+        if(slug && quantity){
+            $.ajax({
+                url: add_to_cart_route,
+                data: data,
+                type: 'POST',
+                success: function (data) {
+                    console.log(data.msg);
+                    alert(data.msg);
+                    $(".cartCount").html(data.cart_count);
+                    updateCartList();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert(error.msg);
+                }
+            });
+        }else {
+            alert("Unexpected error. Try Refreshing this page!");
+        }
+    }
+
+    function updateCartList() {
+        $.ajax({
+            url: '{{ route('cart.content') }}',
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+
+                var content = "";
+                if (data.cart_count > 0) {
+                    content = '<div class="all-cart-product clearfix">';
+
+                    for (index in data.items) {
+                        var item = data.items[index];
+
+                        content += '' +
+                            '<div class="single-cart clearfix">\n' +
+                            '   <div class="cart-image">\n' +
+                            '       <a href="/product/'+item.slug+'">' +
+                            '           <img src="/products/images/'+item.attributes.img+'" alt=""></a>\n' +
+                            '   </div>\n' +
+                            '   <div class="cart-info">\n' +
+                            '       <h5><a href="/product/'+item.slug+'">' +
+                            '               '+ item.name +'</a></h5>\n' +
+                                '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
+                                '   <p>Qty : '+ item.quantity +'</p>\n' +
+                                '   <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
+                            '   </div>\n' +
+                            '</div>';
+                    }
+
+                    content += '' +
+                        '</div>' +
+                        '' +
+                        '<div class="cart-totals">' +
+                        '   <h5>Total <span>$'+ data.total.toFixed(2) +'</span></h5>' +
+                        '</div>' +
+                        '\n' +
+                        '<div class="cart-bottom">\n' +
+                        '   <a href="{!! route('cart') !!}" class="btn-sm">Cart</a>\n' +
+                        '   <p class="clearfix"></p>\n' +
+                        '   <a href="{!! route('checkout') !!}" class="btn-sm">Check out</a>\n' +
+                        '</div>';
+                } else {
+                    content = '' +
+                        '<div class="all-cart-product clearfix">\n' +
+                        '<img src="{!! asset('img/empty_cart.png')  !!}" class="img-responsive center-block" style="margin-bottom: 15px">\n' +
+                        '</div>\n' +
+                        '\n' +
+                        '<!-- Cart Button -->\n' +
+                        '<div class="cart-bottom">\n' +
+                        '<a href="{!! route('shop') !!}" class="btn-sm">Continue Shopping</a>\n' +
+                        '</div>';
+                }
+
+                $("#cart_product_list").html(content);
+
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+                alert(error.msg);
+            }
+        });
+
+    }
 </script>
 
 <!-- Main js -->

@@ -51,11 +51,13 @@
                                         <div class="product-img">
                                             <a class="image" href="{{ route('product.details', ['slug'=>$product->slug]) }}">
                                                 <img src="{{ route('product.image', ['image'=>$product->photo]) }}" alt=""/></a>
-                                            <a href="#" class="add-to-cart">add to cart</a>
+                                            <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}')"
+                                               class="add-to-cart">add to cart</a>
                                             <div class="action-btn fix">
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                                 <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Cart"><i class="pe-7s-cart"></i></a>
+                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}')"
+                                                   title="Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>
                                         <div class="product-info">
@@ -105,7 +107,8 @@
                                             <div class="list-action-btn fix">
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                                 <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a href="#" title="Add To Cart"><i class="pe-7s-cart"></i></a>
+                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}')"
+                                                   title="Add To Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>
                                     </div>

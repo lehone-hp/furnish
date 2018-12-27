@@ -76,6 +76,7 @@ Route::get('/wishlist', 'WishListController@getWishList')->name('wishlist');
 Route::get('/cart', 'CartController@getCart')->name('cart');
 Route::post('/cart/add/item', 'CartController@addToCart')->name('cart.add');
 Route::post('/cart/clear', 'CartController@clearCart')->name('cart.clear');
+Route::get('/cart/content', 'CartController@listCartContent')->name('cart.content');
 
 
 

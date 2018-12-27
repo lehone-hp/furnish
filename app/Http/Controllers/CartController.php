@@ -63,6 +63,24 @@ class CartController extends Controller
         }
     }
 
+    public function listCartContent() {
+        if(request()->ajax()){
+
+            $cartItems = \Cart::getContent();
+
+            return response()->json([
+                "items" => $cartItems,
+                "cart_count" => $cartItems->count(),
+                "total" => \Cart::getTotal(),
+            ], 200);
+
+        }else{
+            return response()->json([
+                "msg" => 'Server error! Please refresh the page.'
+            ], 404);
+        }
+    }
+
     public function clearCart(){
         if(request()->ajax()){
             \Cart::clear();

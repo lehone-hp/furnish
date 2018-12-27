@@ -48,9 +48,9 @@
                                         <tr>
                                             <td class="pro-thumbnail"><a href="{{ route('product.details', ['slug'=>$item->attributes->slug]) }}"><img src="{{ route('product.image', ['image'=>$item->attributes->img]) }}" alt="{{ $item->name }}" /></a></td>
                                             <td class="pro-title"><a href="#">{{ $item->name }}</a></td>
-                                            <td class="pro-price"><span class="amount">XAF {{ $item->price }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">XAF {{ $item->attributes->old_price }}</strike> @endif</span></td>
+                                            <td class="pro-price"><span class="amount">${{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span></td>
                                             <td class="pro-quantity"><div class="product-quantity"><input type="number" value="{{ $item->quantity }}" min="{{ $item->attributes->min_order }}" max="10" readonly/></div></td>
-                                            <td class="pro-subtotal">XAF {{ ($item->price)*($item->quantity) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">XAF {{ ($item->attributes->old_price)*($item->quantity) }}</strike> @endif</td>
+                                            <td class="pro-subtotal">${{ number_format(($item->price)*($item->quantity), 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format(($item->attributes->old_price)*($item->quantity), 2) }}</strike> @endif</td>
                                             <td class="pro-remove"><a href="#"><span class="pe-7s-trash text-danger"></span></a></td>
                                         </tr>
                                     @endforeach
@@ -80,18 +80,18 @@
                                     <tbody>
                                     <tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td><span class="amount">XAF {{ $subtotal }}</span></td>
+                                        <td><span class="amount">${{ number_format($subtotal, 2) }}</span></td>
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>
-                                            <strong><span class="amount">XAF {{ $subtotal }}</span></strong>
+                                            <strong><span class="amount">${{ number_format($subtotal, 2) }}</span></strong>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div class="proceed-to-checkout section mt-30">
-                                    <a href="#">Proceed to Checkout</a>
+                                    <a href="{{ route('checkout') }}">Proceed to Checkout</a>
                                 </div>
                             </div>
                         </div>

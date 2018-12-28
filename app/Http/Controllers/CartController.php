@@ -98,11 +98,20 @@ class CartController extends Controller
 
     public function removeFromCart(Request $request) {
         if(request()->ajax()){
-            \Cart::remove($request->id);
-            return response()->json([
-                "msg" => "Successfully removed item",
-            ], 200);
+            $product = Product::where('slug', $request->slug)->first();
 
+            if($product){
+                \Cart::remove($product->id);
+                return response()->json([
+                    "msg" => "Successfully removed item",
+                ], 200);
+            }else{
+                // product does not exists (very rare case but should be handled)
+                return response()->json([
+                    "msg" => 'Oops product does not exists'
+                ], 404);
+
+            }
         }else{
             // trying to access this route via some other method we block ;)
             return response()->json([

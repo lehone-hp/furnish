@@ -68,6 +68,7 @@ a:focus,
 a:hover {
   color: #ffae00;
   text-decoration: none;
+  cursor: pointer;
 }
 a,
 button,

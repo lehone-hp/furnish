@@ -101,7 +101,8 @@
                                                                 {{ $item->name }}</a></h5>
                                                         <p>Price : ${{ number_format($item->price, 2) }}</p>
                                                         <p>Qty : {{ $item->quantity }}</p>
-                                                        <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
+                                                        <a onclick="removeFromCart('{{ $item->id }}')"
+                                                           class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -354,6 +355,28 @@
         }
     }
 
+    function removeFromCart(itemId) {
+        var data = {
+            id: itemId,
+            _token : mytoken
+        };
+        $.ajax({
+            url: '{{ route('cart.remove') }}',
+            data: data,
+            type: 'POST',
+            success: function (data) {
+                console.log(data.msg);
+                alert(data.msg);
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+                alert(error.msg);
+            }
+        });
+    }
     function updateCartList() {
         $.ajax({
             url: '{{ route('cart.content') }}',
@@ -379,7 +402,7 @@
                             '               '+ item.name +'</a></h5>\n' +
                                 '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
                                 '   <p>Qty : '+ item.quantity +'</p>\n' +
-                                '   <a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
+                                '   <a onclick="removeFromCart('+ item.id +')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
                             '   </div>\n' +
                             '</div>';
                     }

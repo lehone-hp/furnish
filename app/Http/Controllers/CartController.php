@@ -95,4 +95,19 @@ class CartController extends Controller
             ], 404);
         }
     }
+
+    public function removeFromCart(Request $request) {
+        if(request()->ajax()){
+            \Cart::remove($request->id);
+            return response()->json([
+                "msg" => "Successfully removed item",
+            ], 200);
+
+        }else{
+            // trying to access this route via some other method we block ;)
+            return response()->json([
+                "msg" => 'Server error! Please refresh the page.'
+            ], 404);
+        }
+    }
 }

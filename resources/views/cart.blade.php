@@ -51,7 +51,9 @@
                                             <td class="pro-price"><span class="amount">${{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span></td>
                                             <td class="pro-quantity"><div class="product-quantity"><input type="number" value="{{ $item->quantity }}" min="{{ $item->attributes->min_order }}" max="10" readonly/></div></td>
                                             <td class="pro-subtotal">${{ number_format(($item->price)*($item->quantity), 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format(($item->attributes->old_price)*($item->quantity), 2) }}</strike> @endif</td>
-                                            <td class="pro-remove"><a href="#"><span class="pe-7s-trash text-danger"></span></a></td>
+                                            <td class="pro-remove">
+                                                <a onclick="removeFromCart('{{ $item->id }}')"><span class="pe-7s-trash text-danger"></span></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

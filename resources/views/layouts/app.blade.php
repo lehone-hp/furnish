@@ -101,7 +101,7 @@
                                                                 {{ $item->name }}</a></h5>
                                                         <p>Price : ${{ number_format($item->price, 2) }}</p>
                                                         <p>Qty : {{ $item->quantity }}</p>
-                                                        <a onclick="removeFromCart('{{ $item->id }}')"
+                                                        <a onclick="removeFromCart('{{ $item->attributes->slug }}')"
                                                            class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
                                                     </div>
                                                 </div>
@@ -355,9 +355,9 @@
         }
     }
 
-    function removeFromCart(itemId) {
+    function removeFromCart(slug) {
         var data = {
-            id: itemId,
+            slug: slug,
             _token : mytoken
         };
         $.ajax({
@@ -402,7 +402,7 @@
                             '               '+ item.name +'</a></h5>\n' +
                                 '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
                                 '   <p>Qty : '+ item.quantity +'</p>\n' +
-                                '   <a onclick="removeFromCart('+ item.id +')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
+                                '   <a onclick="removeFromCart(\''+ item.attributes.slug +'\')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
                             '   </div>\n' +
                             '</div>';
                     }

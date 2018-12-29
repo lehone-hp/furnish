@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('fonts/pe-Icon/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
     <!-- Plugins css file -->
     <link rel="stylesheet" href="{{ asset('css/plugins.css') }}">
+    <!-- Notify css file -->
+    <link rel="stylesheet" href="{{ asset('css/notify.css') }}">
     <!-- Theme main style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Responsive css -->
@@ -314,10 +316,13 @@
 <script src="/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
 <script src="/js/plugins.js"></script>
+<!-- Notify js -->
+<script src="/js/notify.min.js"></script>
 <!-- Ajax Mail js -->
 <script src="/js/ajax-mail.js"></script>
 
 <script type="text/javascript">
+    // https://kamranahmed.info/toast
     // token for all js requests
         var mytoken = '{{ @csrf_token() }}';
         var add_to_cart_route = '{{ route('cart.add') }}';
@@ -328,31 +333,54 @@
      * @param quantity of product
      * @param slug, product's slug
      */
-    function addToCart(quantity, slug) {
+    function addToCart(quantity, slug , available) {
         var data = {
             qty : quantity,
             slug : slug,
             _token : mytoken
         };
-        if(slug && quantity){
-            $.ajax({
-                url: add_to_cart_route,
-                data: data,
-                type: 'POST',
-                success: function (data) {
-                    console.log(data.msg);
-                    alert(data.msg);
-                    $(".cartCount").html(data.cart_count);
-                    updateCartList();
-                },
-                error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
-                    alert(error.msg);
-                }
+
+        if(available === '0'){
+            $.toast({
+                heading: '<em>Limited Stock </em>!',
+                text: 'Sorry you can\'t order this product at this time. Please try later',
+                icon: 'error',
+                position: 'bottom-right',
+                stack: false,
+                showHideTransition: 'slide',
+                allowToastClose: true,
             });
-        }else {
-            alert("Unexpected error. Try Refreshing this page!");
-        }
+
+            }else {
+                if(slug && quantity){
+                    $.ajax({
+                        url: add_to_cart_route,
+                        data: data,
+                        type: 'POST',
+                        success: function (data) {
+                            $.toast({
+                                heading: '<em>'+data.msg+'</em>!',
+                                text: 'Yes! check cart <a href="/cart">update</a>.',
+                                icon: 'success',
+                                position: 'bottom-right',
+                                stack: false,
+                                showHideTransition: 'slide',
+                                allowToastClose: true,
+                            });
+                            $(".cartCount").html(data.cart_count);
+                            updateCartList();
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(xhr.responseText);
+                            alert(error.msg);
+                        }
+                    });
+                }else {
+                    alert("Unexpected error. Try Refreshing this page!");
+                }
+
+            }
+
     }
 
     function removeFromCart(slug) {
@@ -365,11 +393,17 @@
             data: data,
             type: 'POST',
             success: function (data) {
-                console.log(data.msg);
-                alert(data.msg);
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
+                $.toast({
+                    heading: '<em>'+data.msg+'</em>!',
+                    icon: 'success',
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    allowToastClose: true,
+                    afterHidden: function () {
+                        location.reload();
+                    }
+                });
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);
@@ -441,6 +475,7 @@
         });
 
     }
+
 </script>
 
 <!-- Main js -->

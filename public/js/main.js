@@ -169,7 +169,15 @@ $('.qtybtn').on('click', function() {
         if(oldValue < max){
             var newVal = oldValue + 1;
         }else {
-            alert("Max order limit reached");
+            $.toast({
+                heading: '<em>Order Limit </em>!',
+                text: 'You can order a miximum of 10.',
+                icon: 'error',
+                position: 'bottom-right',
+                stack: false,
+                showHideTransition: 'slide',
+                allowToastClose: true,
+            });
             return;
         }
     } else {
@@ -177,7 +185,15 @@ $('.qtybtn').on('click', function() {
         if (oldValue > min) {
             var newVal = oldValue - 1;
         } else {
-            alert("Sorry you can't order below that qty");
+            $.toast({
+                heading: '<em>Order Limit </em>!',
+                text: 'Sorry you can\'t order below '+ min,
+                icon: 'error',
+                position: 'bottom-right',
+                stack: false,
+                showHideTransition: 'slide',
+                allowToastClose: true,
+            });
             return;
         }
     }
@@ -191,9 +207,9 @@ $('.qtybtn').on('click', function() {
     $("#addToCart").click(function () {
        var qty = parseInt($("#product_qty").val());
        var slug = $("#pdtSlug").val();
-
+       var inStock = $("#pdtInStock").val();
        // Method definition in app.blade.php
-       addToCart(qty, slug);
+       addToCart(qty, slug, inStock);
     });
 
     $("#clearCart").click(function (e) {
@@ -207,12 +223,18 @@ $('.qtybtn').on('click', function() {
             data: data,
             type: 'POST',
             success: function (data) {
-                console.log(data.msg);
-                alert(data.msg);
-                setTimeout(function () {
-                    // we reload the page to show the updated cart or use js still ;)
-                    location.reload();
-                }, 1500);
+                $.toast({
+                    heading: '<em>'+data.msg+'</em>!',
+                    icon: 'success',
+                    position: 'bottom-right',
+                    stack: false,
+                    showHideTransition: 'slide',
+                    allowToastClose: true,
+                    afterHidden: function () {
+                        location.reload();
+                    }
+                });
+
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);

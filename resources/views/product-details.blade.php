@@ -69,6 +69,7 @@
                                 <input id="product_qty" class="product_qty" type="number" min="{{ $product->min_order }}" value="{{ $product->min_order }}" max="10" readonly>
                             </div>
                             <input type="hidden" value="{{ $product->slug }}" id="pdtSlug">
+                            <input type="hidden" value="{{ $product->in_stock }}" id="pdtInStock">
                             <button class="add-to-cart" id="addToCart">add to cart</button>
                         </div>
                         <div class="share-icons section">
@@ -138,12 +139,12 @@
                         <div class="product-item text-center">
                             <div class="product-img">
                                 <a class="image" href="{{ route('product.details', ['slug'=>$related->slug]) }}"><img src="{{ route('product.image', ['image'=>$related->photo]) }}" alt="{{ $related->name }}"/></a>
-                                <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}')"
+                                <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}', '{{ $related->in_stock }}')"
                                    class="add-to-cart">add to cart</a>
                                 <div class="action-btn fix">
                                     <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                     <a href="{{ route('product.details', ['slug'=>$related->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}')"
+                                    <a onclick="addToCart('{{ $related->min_order }}', '{{ $related->slug }}', '{{ $related->in_stock }}')"
                                        title="Cart"><i class="pe-7s-cart"></i></a>
                                 </div>
                             </div>

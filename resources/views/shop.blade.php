@@ -56,7 +56,7 @@
                                             <div class="action-btn fix">
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                                 <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}')"
+                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}', '{{ $product->in_stock }}')"
                                                    title="Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>
@@ -107,7 +107,7 @@
                                             <div class="list-action-btn fix">
                                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                                 <a href="{{ route('product.details', ['slug'=>$product->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}')"
+                                                <a onclick="addToCart('{{ $product->min_order }}', '{{ $product->slug }}', '{{ $product->in_stock }}')"
                                                    title="Add To Cart"><i class="pe-7s-cart"></i></a>
                                             </div>
                                         </div>

@@ -80,12 +80,12 @@
                     <div class="product-item text-center">
                         <div class="product-img">
                             <a class="image" href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}"><img src="{{ route('product.image', ['image'=>$new_arrival->photo]) }}" alt=""/></a>
-                            <a class="add-to-cart" onclick="addToCart('{{ $new_arrival->min_order }}', '{{ $new_arrival->slug }}')">
+                            <a class="add-to-cart" onclick="addToCart('{{ $new_arrival->min_order }}', '{{ $new_arrival->slug }}', '{{ $new_arrival->in_stock }}')">
                                 add to cart</a>
                             <div class="action-btn fix">
                                 <a href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                 <a href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}" title="Quickview"><i class="pe-7s-look"></i></a>
-                                <a onclick="addToCart('{{ $new_arrival->min_order }}', '{{ $new_arrival->slug }}');" title="Cart">
+                                <a onclick="addToCart('{{ $new_arrival->min_order }}', '{{ $new_arrival->slug }}', '{{ $new_arrival->in_stock }}');" title="Cart">
                                     <i class="pe-7s-cart"></i></a>
                             </div>
                         </div>

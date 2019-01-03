@@ -348,7 +348,7 @@
                 position: 'bottom-right',
                 stack: false,
                 showHideTransition: 'slide',
-                allowToastClose: true,
+                allowToastClose: true, loader : false,
             });
 
             }else {
@@ -365,7 +365,7 @@
                                 position: 'bottom-right',
                                 stack: false,
                                 showHideTransition: 'slide',
-                                allowToastClose: true,
+                                allowToastClose: true, loader : false,
                             });
                             $(".cartCount").html(data.cart_count);
                             updateCartList();
@@ -399,7 +399,7 @@
                     position: 'bottom-right',
                     stack: false,
                     showHideTransition: 'slide',
-                    allowToastClose: true,
+                    allowToastClose: true, loader : false,
                     afterHidden: function () {
                         location.reload();
                     }

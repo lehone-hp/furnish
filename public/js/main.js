@@ -177,6 +177,7 @@ $('.qtybtn').on('click', function() {
                 stack: false,
                 showHideTransition: 'slide',
                 allowToastClose: true,
+                loader : false,
             });
             return;
         }
@@ -193,6 +194,7 @@ $('.qtybtn').on('click', function() {
                 stack: false,
                 showHideTransition: 'slide',
                 allowToastClose: true,
+                loader : false,
             });
             return;
         }
@@ -230,6 +232,7 @@ $('.qtybtn').on('click', function() {
                     stack: false,
                     showHideTransition: 'slide',
                     allowToastClose: true,
+                    loader : false,
                     afterHidden: function () {
                         location.reload();
                     }

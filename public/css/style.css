@@ -1812,7 +1812,7 @@ a.meanmenu-reveal i {
   background-color: #ffae00;
 }
 /*-- Quantity --*/
-.product-quantity {
+.product-quantity, .cart-quantity {
   border: 1px solid #ddd;
   display: block;
   float: left;
@@ -1821,13 +1821,15 @@ a.meanmenu-reveal i {
   padding: 0 35px;
   position: relative;
 }
-.product-quantity input {
+.product-quantity input,
+.cart-quantity input {
   border: medium none;
   height: 36px;
   text-align: center;
   width: 50px;
 }
-.product-quantity span {
+.product-quantity span,
+.cart-quantity span {
   cursor: pointer;
   display: block;
   height: 36px;
@@ -1836,15 +1838,18 @@ a.meanmenu-reveal i {
   top: 0;
   width: 35px;
 }
-.product-quantity span i {
+.product-quantity span i,
+.cart-quantity span i {
   display: block;
   font-size: 18px;
   line-height: 36px;
 }
-.product-quantity span.inc {
+.product-quantity span.inc,
+.cart-quantity span.inc {
   right: 0;
 }
-.product-quantity span.dec {
+.product-quantity span.dec,
+.cart-quantity span.dec {
   left: 0;
 }
 /*-- Share Icons --*/
@@ -2646,7 +2651,8 @@ a.meanmenu-reveal i {
 .cart-table table tbody tr td.pro-quantity {
   width: 180px;
 }
-.cart-table table tbody tr td.pro-quantity .product-quantity {
+.cart-table table tbody tr td.pro-quantity .product-quantity,
+.cart-table table tbody tr td.pro-quantity .cart-quantity {
   display: inline-block;
   float: none;
   margin: 0;

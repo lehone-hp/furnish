@@ -14,7 +14,6 @@ class CartController extends Controller
         return view('cart', compact('items', 'subtotal'));
     }
 
-
     // function to add item to cart
     public function addToCart(Request $request){
 
@@ -114,6 +113,47 @@ class CartController extends Controller
             }
         }else{
             // trying to access this route via some other method we block ;)
+            return response()->json([
+                "msg" => 'Server error! Please refresh the page.'
+            ], 404);
+        }
+    }
+
+    public function updateQuantity(Request $request) {
+        if(request()->ajax()){
+
+
+            $product = Product::where('slug', $request->slug)->first();
+
+            if ($product) {
+                $itemId = $product->id;
+
+                \Cart::update($itemId, array(
+                    'quantity' => array(
+                        'relative' => false,
+                        'value' => (int) $request->quantity,
+                    ),
+                ));
+
+                $item = \Cart::get($itemId);
+
+                return response()->json([
+                    "item" => $item,
+                    "items" => \Cart::getContent(),
+                    "cart_count" => \Cart::getContent()->count(),
+                    "total" => \Cart::getTotal(),
+                    "msg" => "Successfully updated item quantity",
+                ], 200);
+            } else {
+                // product does not exists (very rare case but should be handled)
+                return response()->json([
+                    "msg" => 'Oops product does not exists'
+                ], 404);
+
+            }
+
+
+        }else{
             return response()->json([
                 "msg" => 'Server error! Please refresh the page.'
             ], 404);

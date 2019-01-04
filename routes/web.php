@@ -78,6 +78,7 @@ Route::post('/cart/add/item', 'CartController@addToCart')->name('cart.add');
 Route::post('/cart/clear', 'CartController@clearCart')->name('cart.clear');
 Route::get('/cart/content', 'CartController@listCartContent')->name('cart.content');
 Route::post('/cart/remove', 'CartController@removeFromCart')->name('cart.remove');
+Route::post('/cart/update/quantity', 'CartController@updateQuantity')->name('cart.update.quantity');
 
 
 //======================================/

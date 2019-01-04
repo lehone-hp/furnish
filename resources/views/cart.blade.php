@@ -45,12 +45,24 @@
                                     <tbody>
 
                                     @foreach($items as $item)
-                                        <tr>
+                                        <tr class="cart-table-row" id="{{ "item-".$item->attributes->slug }}">
                                             <td class="pro-thumbnail"><a href="{{ route('product.details', ['slug'=>$item->attributes->slug]) }}"><img src="{{ route('product.image', ['image'=>$item->attributes->img]) }}" alt="{{ $item->name }}" /></a></td>
                                             <td class="pro-title"><a href="#">{{ $item->name }}</a></td>
-                                            <td class="pro-price"><span class="amount">${{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span></td>
-                                            <td class="pro-quantity"><div class="product-quantity"><input type="number" value="{{ $item->quantity }}" min="{{ $item->attributes->min_order }}" max="10" readonly/></div></td>
-                                            <td class="pro-subtotal">${{ number_format(($item->price)*($item->quantity), 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format(($item->attributes->old_price)*($item->quantity), 2) }}</strike> @endif</td>
+                                            <td class="pro-price">
+                                                <span class="amount">${{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span>
+                                                <input type="hidden" class="cart-unit-price" value="{{ number_format($item->price, 2) }}">
+                                            </td>
+                                            <td class="pro-quantity">
+                                                <div class="cart-quantity">
+                                                    <input type="number" class="qty" value="{{ $item->quantity }}"
+                                                           min="{{ $item->attributes->min_order }}"
+                                                           max="10" readonly/>
+                                                    <input class="item-slug" type="hidden" value="{{ $item->attributes->slug}}">
+                                                </div>
+                                            </td>
+                                            <td class="pro-subtotal">
+                                                $<span class="cart-table-item-total">
+                                                    {{ number_format(($item->price)*($item->quantity), 2) }}</span></td>
                                             <td class="pro-remove">
                                                 <a onclick="removeFromCart('{{ $item->attributes->slug }}')"><span class="pe-7s-trash text-danger"></span></a>
                                             </td>
@@ -64,17 +76,11 @@
                             <div class="cart-buttons mb-30">
                                 <a href="{{ route('shop') }}">Continue Shopping</a>
                             </div>
-                            <div class="cart-coupon mb-40">
-                                <h4>Coupon</h4>
-                                <p>Enter your coupon code if you have one.</p>
-                                <input type="text" placeholder="Coupon code" />
-                                <input type="submit" value="Apply Coupon" />
-                            </div>
                         </div>
                         <div class="col-md-4 col-sm-5 col-xs-12">
                             <div class="cart-buttons mb-30">
-                                <input type="submit" value="Update Cart" />
-                                <a href="#" id="clearCart">Clear Cart</a>
+                                <a href="#" class="pull-right"
+                                   id="clearCart">Clear Cart</a>
                             </div>
                             <div class="cart-total mb-40">
                                 <h3>Cart Totals</h3>
@@ -82,12 +88,13 @@
                                     <tbody>
                                     <tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td><span class="amount">${{ number_format($subtotal, 2) }}</span></td>
+                                        <td><span class="amount" id="cart-table-subtotal">${{ number_format($subtotal, 2) }}</span></td>
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>
-                                            <strong><span class="amount">${{ number_format($subtotal, 2) }}</span></strong>
+                                            <strong><span class="amount" id="cart-table-total">
+                                                    ${{ number_format($subtotal, 2) }}</span></strong>
                                         </td>
                                     </tr>
                                     </tbody>

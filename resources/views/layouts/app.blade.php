@@ -411,71 +411,108 @@
             }
         });
     }
+
+    /**
+     * Update product's quantity in cart with new value
+     * @param quantity of product
+     * @param id od the product in the cart
+     */
+    function updateQuantity(slug, quantity) {
+        var data = {
+            slug : slug,
+            quantity : quantity,
+            _token : mytoken
+        };
+        if(slug && quantity){
+            $.ajax({
+                url: '{{ route('cart.update.quantity') }}',
+                data: data,
+                type: 'POST',
+                success: function (data) {
+                    var row = $('#item-'+data.item.attributes.slug);
+                    row.find('.cart-table-item-total').html((data.item.price * data.item.quantity).toFixed(2));
+                    $('#cart-table-subtotal').html("$"+data.total.toFixed(2));
+                    $('#cart-table-total').html("$"+data.total.toFixed(2));
+
+                    updateCart(data);
+                },
+                error: function (xhr, status, error) {
+                    alert(error.msg);
+                }
+            });
+        }else {
+            alert("Unexpected error. Try Refreshing this page!");
+        }
+    }
+
     function updateCartList() {
         $.ajax({
             url: '{{ route('cart.content') }}',
             type: 'GET',
             success: function (data) {
-                console.log(data);
-
-                var content = "";
-                if (data.cart_count > 0) {
-                    content = '<div class="all-cart-product clearfix">';
-
-                    for (index in data.items) {
-                        var item = data.items[index];
-
-                        content += '' +
-                            '<div class="single-cart clearfix">\n' +
-                            '   <div class="cart-image">\n' +
-                            '       <a href="/product/'+item.slug+'">' +
-                            '           <img src="/products/images/'+item.attributes.img+'" alt=""></a>\n' +
-                            '   </div>\n' +
-                            '   <div class="cart-info">\n' +
-                            '       <h5><a href="/product/'+item.slug+'">' +
-                            '               '+ item.name +'</a></h5>\n' +
-                                '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
-                                '   <p>Qty : '+ item.quantity +'</p>\n' +
-                                '   <a onclick="removeFromCart(\''+ item.attributes.slug +'\')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
-                            '   </div>\n' +
-                            '</div>';
-                    }
-
-                    content += '' +
-                        '</div>' +
-                        '' +
-                        '<div class="cart-totals">' +
-                        '   <h5>Total <span>$'+ data.total.toFixed(2) +'</span></h5>' +
-                        '</div>' +
-                        '\n' +
-                        '<div class="cart-bottom">\n' +
-                        '   <a href="{!! route('cart') !!}" class="btn-sm">Cart</a>\n' +
-                        '   <p class="clearfix"></p>\n' +
-                        '   <a href="{!! route('checkout') !!}" class="btn-sm">Check out</a>\n' +
-                        '</div>';
-                } else {
-                    content = '' +
-                        '<div class="all-cart-product clearfix">\n' +
-                        '<img src="{!! asset('img/empty_cart.png')  !!}" class="img-responsive center-block" style="margin-bottom: 15px">\n' +
-                        '</div>\n' +
-                        '\n' +
-                        '<!-- Cart Button -->\n' +
-                        '<div class="cart-bottom">\n' +
-                        '<a href="{!! route('shop') !!}" class="btn-sm">Continue Shopping</a>\n' +
-                        '</div>';
-                }
-
-                $("#cart_product_list").html(content);
-
+                updateCart(data);
             },
             error: function (xhr, status, error) {
                 console.log(xhr.responseText);
                 alert(error.msg);
             }
         });
-
     }
 
+    /**
+     * Update the top right cart drop-down list
+     * @param data
+     */
+    function updateCart(data) {
+        var content = "";
+        if (data.cart_count > 0) {
+            content = '<div class="all-cart-product clearfix">';
+
+            for (index in data.items) {
+                var item = data.items[index];
+
+                content += '' +
+                    '<div class="single-cart clearfix">\n' +
+                    '   <div class="cart-image">\n' +
+                    '       <a href="/product/'+item.attributes.slug+'">' +
+                    '           <img src="/products/images/'+item.attributes.img+'" alt=""></a>\n' +
+                    '   </div>\n' +
+                    '   <div class="cart-info">\n' +
+                    '       <h5><a href="/product/'+item.slug+'">' +
+                    '               '+ item.name +'</a></h5>\n' +
+                    '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
+                    '   <p>Qty : '+ item.quantity +'</p>\n' +
+                    '   <a onclick="removeFromCart(\''+ item.attributes.slug +'\')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
+                    '   </div>\n' +
+                    '</div>';
+            }
+
+            content += '' +
+                '</div>' +
+                '' +
+                '<div class="cart-totals">' +
+                '   <h5>Total <span>$'+ data.total.toFixed(2) +'</span></h5>' +
+                '</div>' +
+                '\n' +
+                '<div class="cart-bottom">\n' +
+                '   <a href="{!! route('cart') !!}" class="btn-sm">Cart</a>\n' +
+                '   <p class="clearfix"></p>\n' +
+                '   <a href="{!! route('checkout') !!}" class="btn-sm">Check out</a>\n' +
+                '</div>';
+        } else {
+            content = '' +
+                '<div class="all-cart-product clearfix">\n' +
+                '<img src="{!! asset('img/empty_cart.png')  !!}" class="img-responsive center-block" style="margin-bottom: 15px">\n' +
+                '</div>\n' +
+                '\n' +
+                '<!-- Cart Button -->\n' +
+                '<div class="cart-bottom">\n' +
+                '<a href="{!! route('shop') !!}" class="btn-sm">Continue Shopping</a>\n' +
+                '</div>';
+        }
+
+        $("#cart_product_list").html(content);
+    }
 </script>
 
 <!-- Main js -->

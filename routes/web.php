@@ -21,6 +21,10 @@ Route::get('/contact', 'PagesController@getContact')->name('contact');
 Route::get('/shop/{category?}', 'PagesController@getShop')->name('shop');
 Route::get('/product/{slug}', 'PagesController@getProductDetails')->name('product.details');
 Route::get('/checkout', 'PagesController@getCheckout')->name('checkout');
+Route::post('/checkout', 'PagesController@placeOrder')->name('checkout');
+Route::get('/payment-return', 'PagesController@paymentReturn')->name('payment_return');
+Route::get('/order/{order_id}', 'PagesController@orderDetail')->name('order_detail');
+Route::get('/invoice/status/{order_id}', 'PagesController@checkInvoiceStatus')->name('invoice_status');
 
 //======================================/
 //        ADMIN ROUTES

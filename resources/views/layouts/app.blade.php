@@ -321,6 +321,43 @@
 <!-- Ajax Mail js -->
 <script src="/js/ajax-mail.js"></script>
 
+<script>
+
+    @if(session()->has('success'))
+    $.toast({
+        text: '{{session()->get("success")}}',
+        icon: 'success',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+    @if(session()->has('error'))
+    $.toast({
+        text: '{{session()->get("error") }}',
+        icon: 'error',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+    @if(session()->has('warning'))
+    $.toast({
+        text: '{{session()->get("warning") }}',
+        icon: 'warning',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+</script>
+
 <script type="text/javascript">
     // https://kamranahmed.info/toast
     // token for all js requests
@@ -518,6 +555,7 @@
 <!-- Main js -->
 <script src="/js/main.js"></script>
 
+@yield('footer_script')
 </body>
 
 </html>

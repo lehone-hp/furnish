@@ -49,7 +49,7 @@
                                             <td class="pro-thumbnail"><a href="{{ route('product.details', ['slug'=>$item->attributes->slug]) }}"><img src="{{ route('product.image', ['image'=>$item->attributes->img]) }}" alt="{{ $item->name }}" /></a></td>
                                             <td class="pro-title"><a href="#">{{ $item->name }}</a></td>
                                             <td class="pro-price">
-                                                <span class="amount">${{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">${{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span>
+                                                <span class="amount">FCFA {{ number_format($item->price, 2) }}@if($item->attributes->old_price != null) <br><strike style="font-size: 12px">FCFA {{ number_format($item->attributes->old_price, 2) }}</strike> @endif</span>
                                                 <input type="hidden" class="cart-unit-price" value="{{ number_format($item->price, 2) }}">
                                             </td>
                                             <td class="pro-quantity">
@@ -61,7 +61,7 @@
                                                 </div>
                                             </td>
                                             <td class="pro-subtotal">
-                                                $<span class="cart-table-item-total">
+                                                FCFA <span class="cart-table-item-total">
                                                     {{ number_format(($item->price)*($item->quantity), 2) }}</span></td>
                                             <td class="pro-remove">
                                                 <a onclick="removeFromCart('{{ $item->attributes->slug }}')"><span class="pe-7s-trash text-danger"></span></a>
@@ -88,13 +88,13 @@
                                     <tbody>
                                     <tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td><span class="amount" id="cart-table-subtotal">${{ number_format($subtotal, 2) }}</span></td>
+                                        <td><span class="amount" id="cart-table-subtotal">FCFA {{ number_format($subtotal, 2) }}</span></td>
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>
                                             <strong><span class="amount" id="cart-table-total">
-                                                    ${{ number_format($subtotal, 2) }}</span></strong>
+                                                    FCFA {{ number_format($subtotal, 2) }}</span></strong>
                                         </td>
                                     </tr>
                                     </tbody>

@@ -101,7 +101,7 @@
                                                     <div class="cart-info">
                                                         <h5><a href="{{ route('product.details', ['slug'=>$item->attributes->slug]) }}">
                                                                 {{ $item->name }}</a></h5>
-                                                        <p>Price : ${{ number_format($item->price, 2) }}</p>
+                                                        <p>Price : FCFA {{ number_format($item->price, 2) }}</p>
                                                         <p>Qty : {{ $item->quantity }}</p>
                                                         <a onclick="removeFromCart('{{ $item->attributes->slug }}')"
                                                            class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>
@@ -111,7 +111,7 @@
                                         </div>
                                         <!-- Cart Total -->
                                         <div class="cart-totals">
-                                            <h5>Total <span>${{ number_format(Cart::getTotal(), 2) }}</span></h5>
+                                            <h5>Total <span>FCFA {{ number_format(Cart::getTotal(), 2) }}</span></h5>
                                         </div>
 
                                         <!-- Cart Button -->
@@ -321,6 +321,43 @@
 <!-- Ajax Mail js -->
 <script src="/js/ajax-mail.js"></script>
 
+<script>
+
+    @if(session()->has('success'))
+    $.toast({
+        text: '{{session()->get("success")}}',
+        icon: 'success',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+    @if(session()->has('error'))
+    $.toast({
+        text: '{{session()->get("error") }}',
+        icon: 'error',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+    @if(session()->has('warning'))
+    $.toast({
+        text: '{{session()->get("warning") }}',
+        icon: 'warning',
+        position: 'top-center',
+        stack: false,
+        showHideTransition: 'slide',
+        allowToastClose: true, loader : false,
+    });
+    @endif
+
+</script>
+
 <script type="text/javascript">
     // https://kamranahmed.info/toast
     // token for all js requests
@@ -431,8 +468,8 @@
                 success: function (data) {
                     var row = $('#item-'+data.item.attributes.slug);
                     row.find('.cart-table-item-total').html((data.item.price * data.item.quantity).toFixed(2));
-                    $('#cart-table-subtotal').html("$"+data.total.toFixed(2));
-                    $('#cart-table-total').html("$"+data.total.toFixed(2));
+                    $('#cart-table-subtotal').html("FCFA "+data.total.toFixed(2));
+                    $('#cart-table-total').html("FCFA "+data.total.toFixed(2));
 
                     updateCart(data);
                 },
@@ -480,7 +517,7 @@
                     '   <div class="cart-info">\n' +
                     '       <h5><a href="/product/'+item.slug+'">' +
                     '               '+ item.name +'</a></h5>\n' +
-                    '   <p>Price : $'+ item.price.toFixed(2) +'</p>\n' +
+                    '   <p>Price : FCFA'+ item.price.toFixed(2) +'</p>\n' +
                     '   <p>Qty : '+ item.quantity +'</p>\n' +
                     '   <a onclick="removeFromCart(\''+ item.attributes.slug +'\')" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>\n' +
                     '   </div>\n' +
@@ -491,7 +528,7 @@
                 '</div>' +
                 '' +
                 '<div class="cart-totals">' +
-                '   <h5>Total <span>$'+ data.total.toFixed(2) +'</span></h5>' +
+                '   <h5>Total <span>FCFA '+ data.total.toFixed(2) +'</span></h5>' +
                 '</div>' +
                 '\n' +
                 '<div class="cart-bottom">\n' +
@@ -518,6 +555,7 @@
 <!-- Main js -->
 <script src="/js/main.js"></script>
 
+@yield('footer_script')
 </body>
 
 </html>

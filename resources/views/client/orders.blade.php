@@ -26,43 +26,43 @@
                         <th>Order ID</th>
                         <th>Payment Mode</th>
                         <th>Total Amount</th>
+                        <th>Payment</th>
                         <th>Order Date</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>ORD-12345</td>
-                        <td>Credit Card</td>
-                        <td>$500</td>
-                        <td>2018-09-29 05:57</td>
-                        <td>
-                            <a href="{{ route('client.order-detail', ['order_id' => 'ORD-12345']) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>ORD-12345</td>
-                        <td>Credit Card</td>
-                        <td>$500</td>
-                        <td>2018-09-29 05:57</td>
-                        <td>
-                            <a href="{{ route('client.order-detail', ['order_id' => 'ORD-12345']) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>ORD-12345</td>
-                        <td>Credit Card</td>
-                        <td>$500</td>
-                        <td>2018-09-29 05:57</td>
-                        <td>
-                            <a href="{{ route('client.order-detail', ['order_id' => 'ORD-12345']) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                        </td>
-                    </tr>
+                    @forelse($orders as $order)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $order->order_id }}</td>
+                            <td>{{ $order->payment_method }}</td>
+                            <td>FCFA {{ number_format($order->amount_total, 0) }}</td>
+                            <td>
+                                @if($order->payment_status == 'pending')
+                                    <span class="badge badge-warning">Pending</span>
+                                @elseif($order->payment_status == 'completed')
+                                    <span class="badge badge-success">Completed</span>
+                                @endif
+                            </td>
+                            <td>{{ $order->created_at }}</td>
+                            <td>
+                                <a href="{{ route('order_detail', ['order_id' => $order->order_id]) }}"
+                                   class="btn btn-sm btn-primary"><i class="fa fa-angle-double-right"></i></a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7">
+                                <h3 class="text-left">No Order Found</h3>
+                            </td>
+                        </tr>
+                    @endforelse
                     </tbody>
                 </table>
+                <div class="mt-3">
+                    {{ $orders->links() }}
+                </div>
             </div>
             <!-- END DATA TABLE-->
         </div>

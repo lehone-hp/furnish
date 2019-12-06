@@ -93,7 +93,7 @@ class PagesController extends Controller
         $order = new Order();
         $order->order_id = time();
         $order->amount_total = \Cart::getSubTotal();
-        $order->payment_method = 'UnifiedPay';
+        $order->payment_method = 'Pursar';
         $order->user_id = Auth::id();
         $order->payment_status = 'pending';
         $order->save();

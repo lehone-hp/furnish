@@ -362,7 +362,7 @@
                                                         × {{ $item->quantity }}</strong>
                                                 </td>
                                                 <td class="product-total">
-                                                    <span class="amount">${{ number_format($item->price * $item->quantity, 2) }}</span>
+                                                    <span class="amount">FCFA {{ number_format($item->price * $item->quantity, 2) }}</span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -370,11 +370,11 @@
                                         <tfoot>
                                         <tr>
                                             <th>Cart Subtotal</th>
-                                            <td>${{ number_format(Cart::getTotal(), 2) }}</td>
+                                            <td>FCFA {{ number_format(Cart::getTotal(), 2) }}</td>
                                         </tr>
                                         <tr>
                                             <th>Order Total</th>
-                                            <td><strong>${{ number_format(Cart::getTotal(), 2) }}</strong>
+                                            <td><strong>FCFA {{ number_format(Cart::getTotal(), 2) }}</strong>
                                             </td>
                                         </tr>
                                         </tfoot>

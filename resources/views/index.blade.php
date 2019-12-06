@@ -92,9 +92,9 @@
                         <div class="product-info">
                             <h5 class="title"><a href="{{ route('product.details', ['slug'=>$new_arrival->slug]) }}">{{ $new_arrival->name }}</a></h5>
                             <span class="price">
-                                <span class="new">${{ number_format($new_arrival->price, 2) }}</span>
+                                <span class="new">FCFA {{ number_format($new_arrival->price, 2) }}</span>
                                 @if($new_arrival->old_price)
-                                    <span class="old">${{ number_format($new_arrival->old_price, 2) }}</span>
+                                    <span class="old">FCFA {{ number_format($new_arrival->old_price, 2) }}</span>
                                 @endif
                             </span>
                         </div>

@@ -63,9 +63,9 @@
                                         <div class="product-info">
                                             <h5 class="title"><a href="{{ route('product.details', ['slug'=>$product->slug]) }}">{{ $product->name }}</a></h5>
                                             <span class="price">
-                                                <span class="new">${{ number_format($product->price, 2) }}</span>
+                                                <span class="new">FCFA {{ number_format($product->price, 2) }}</span>
                                                 @if( $product->old_price )
-                                                    <span class="old">${{ number_format($product->old_price) }}</span>
+                                                    <span class="old">FCFA {{ number_format($product->old_price) }}</span>
                                                 @endif
                                             </span>
                                         </div>
@@ -98,9 +98,9 @@
                                             <h2 class="title"><a href="{{ route('product.details', ['slug'=>$product->slug]) }}">
                                                     {{ $product->name }}</a></h2>
                                             <span class="price">
-                                                <span class="new">${{ number_format($product->price, 2) }}</span>
+                                                <span class="new">FCFA {{ number_format($product->price, 2) }}</span>
                                                 @if( $product->old_price )
-                                                    <span class="old">${{ number_format($product->old_price) }}</span>
+                                                    <span class="old">FCFA {{ number_format($product->old_price) }}</span>
                                                 @endif
                                             </span>
                                             <p>{{ substr(strip_tags($product->description), 0, 155).'....' }}</p>

@@ -38,9 +38,9 @@
                     <div class="product-details">
                         <h2 class="title">{{ $product->name }}</h2>
                         <span class="price section">
-                            <span class="new">${{ number_format($product->price, 2) }}</span>
+                            <span class="new">FCFA {{ number_format($product->price, 2) }}</span>
                             @if( $product->old_price)
-                            <span class="old">${{ number_format($product->old_price, 2) }}</span>
+                            <span class="old">FCFA {{ number_format($product->old_price, 2) }}</span>
                             @endif
                         </span>
                         <span class="availability section">
@@ -151,9 +151,9 @@
                             <div class="product-info">
                                 <h5 class="title"><a href="{{ route('product.details', ['slug'=>$related->slug]) }}">{{ $related->name }}</a></h5>
                                 <span class="price">
-                                    <span class="new">${{ number_format($related->price, 2) }}</span>
+                                    <span class="new">FCFA {{ number_format($related->price, 2) }}</span>
                                     @if( $related->old_price )
-                                    <span class="old">${{ number_format($related->old_price, 2) }}</span>
+                                    <span class="old">FCFA {{ number_format($related->old_price, 2) }}</span>
                                     @endif
                                 </span>
                             </div>

@@ -12,7 +12,7 @@ class Pursar extends Model
     private $description;
     private $invoice_id;
 
-    private $pursar_url = 'http://localhost/pursar-backend/public';
+    private $pursar_url = 'http://pursar.lehone.net';
 
     public function __construct($api_key, $api_secret)
     {

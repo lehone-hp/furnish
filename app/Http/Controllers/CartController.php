@@ -17,7 +17,6 @@ class CartController extends Controller
     // function to add item to cart
     public function addToCart(Request $request){
 
-        if(request()->ajax()){
             $product = Product::where('slug',$request->slug)->first();
 
             if($product){
@@ -54,16 +53,9 @@ class CartController extends Controller
                 ], 404);
 
             }
-
-        }else{
-            return response()->json([
-                "msg" => 'Server error! Please refresh the page.'
-            ], 404);
-        }
     }
 
     public function listCartContent() {
-        if(request()->ajax()){
 
             $cartItems = \Cart::getContent();
 
@@ -73,30 +65,17 @@ class CartController extends Controller
                 "total" => \Cart::getTotal(),
             ], 200);
 
-        }else{
-            return response()->json([
-                "msg" => 'Server error! Please refresh the page.'
-            ], 404);
-        }
     }
 
     public function clearCart(){
-        if(request()->ajax()){
             \Cart::clear();
             return response()->json([
                 "msg" => "Successfully cleared cart",
             ], 200);
 
-        }else{
-            // trying to access this route via some other method we block ;)
-            return response()->json([
-                "msg" => 'Server error! Please refresh the page.'
-            ], 404);
-        }
     }
 
     public function removeFromCart(Request $request) {
-        if(request()->ajax()){
             $product = Product::where('slug', $request->slug)->first();
 
             if($product){
@@ -111,16 +90,9 @@ class CartController extends Controller
                 ], 404);
 
             }
-        }else{
-            // trying to access this route via some other method we block ;)
-            return response()->json([
-                "msg" => 'Server error! Please refresh the page.'
-            ], 404);
-        }
     }
 
     public function updateQuantity(Request $request) {
-        if(request()->ajax()){
 
 
             $product = Product::where('slug', $request->slug)->first();
@@ -153,10 +125,5 @@ class CartController extends Controller
             }
 
 
-        }else{
-            return response()->json([
-                "msg" => 'Server error! Please refresh the page.'
-            ], 404);
-        }
     }
 }

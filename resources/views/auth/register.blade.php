@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col-xs-12">
-                    <h2>login</h2>
+                    <h2>Register</h2>
                     <ul class="breadcrumb">
                         <li><a href="{{ route('index') }}">Home</a></li>
                         <li class="active">Register</li>
@@ -400,8 +400,13 @@
                                     <label for="rememberme">I agree <a href="#">Terms &amp; Condition</a></label>
                                 </div>
                                 -->
-                                <div class="col-xs-12">
+                                <div class="col-xs-12 mb-20">
                                     <input value="register" type="submit">
+                                </div>
+
+
+                                <div class="col-xs-12">
+                                    Already have an account? <a href="{{ route('login') }}"> Login</a>
                                 </div>
                             </div>
                         </form>

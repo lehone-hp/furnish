@@ -55,7 +55,7 @@
                                     </label>
                                 </div>
                                 <div class="col-xs-12">
-                                    <a href="#">Lost your password?</a>
+                                    Don't have an account? <a href="{{ route('register') }}"> Sign up</a>
                                 </div>
                             </div>
                         </form>

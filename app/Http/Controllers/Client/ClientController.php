@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Client;
 
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +60,8 @@ class ClientController extends Controller {
     }
 
     public function getOrders() {
-        return view('client.orders');
+        $orders = Order::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->paginate(20);
+        return view('client.orders', compact('orders'));
     }
 
     public function getOrderDetail($order_id) {
